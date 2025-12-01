@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link rel="stylesheet" href="estilos.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intercambio Navideño 2025</title>
+</head>
+<body>
+    <div class="snowflakes" aria-hidden="true"></div>
+    <div id="christmas-loader">
+        <img src="Bienvenida.webp" alt="Feliz Navidad"> 
+    </div>
+
+    <div id="user-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <div class="modal-header">
+                </div>
+            <div class="modal-body">
+                </div>
+        </div>
+    </div>
+ 
+    <header class="navidad-header">
+        <div class="header-content-wrapper"> <div class="header-line">
+                <span class="arbol-decor arbol-izq">🎄</span> 
+                <h1>Intercambio Navideño 2025</h1>
+                <span class="arbol-decor arbol-der">🎄</span> 
+            </div>
+            
+            <div class="header-line">
+                <span class="estrella estrella-izq">✨</span>
+                <h2 class="titulo-rojo-navidad">¡Feliz Navidad!</h2>
+                <span class="estrella estrella-der">✨</span>
+            </div>
+            
+            </div>
+    </header>
+    <div class="product-grid">
+        <!--
+        <div class="product-card" onclick="openModal('Amigo 1', 'https://i.imgur.com/8uO0M3j.jpg', 'Edad: 28, Gustos: Tecnología, Color Favorito: Azul', 'Le encanta el café y los libros. El regalo debe ser funcional y elegante. Evitar cosas muy personales.')">
+            <span class="card-icon-emoji"></span>  <div class="card-content">
+            <img src="amigo.jpg" alt="Foto de Amigo 1">
+            <h3>Amigo 1</h3>
+            </div>
+            <p>Le encanta el café y los libros.</p> 
+        </div>
+
+        <div class="product-card" onclick="openModal('Amigo 2', 'https://i.imgur.com/8uO0M3j.jpg', 'Edad: 35, Gustos: Jardinería, Color Favorito: Verde', 'Necesita algo para su escritorio. Algo que aporte paz y naturaleza a su espacio de trabajo.')">
+            <span class="card-icon-emoji"></span>  <div class="card-content">
+            <img src="amigo.jpg" alt="Foto de Amigo 2">
+            <h3>Amigo 2</h3>
+            </div>
+            <p>Necesita algo para su escritorio.</p>
+        </div>
+
+        <div class="product-card" onclick="openModal('Amigo 3', 'https://i.imgur.com/8uO0M3j.jpg', 'Edad: 22, Gustos: Viajar, Color Favorito: Amarillo', 'Algo azul o relacionado con el mar. Un accesorio de viaje pequeño y útil será bien recibido.')">
+            <span class="card-icon-emoji"></span>  <div class="card-content">
+            <img src="amigo.jpg" alt="Foto de Amigo 3">
+            <h3>Amigo 3</h3>
+            </div>
+            <p>Algo azul o relacionado con el mar.</p>
+        </div>
+
+        <div class="product-card" onclick="openModal('Amigo 4', 'https://i.imgur.com/8uO0M3j.jpg', 'Edad: 30, Gustos: Cocina, Color Favorito: Rojo', 'Un dulce regalo comestible. Prefiere lo artesanal o gourmet.')">
+            <span class="card-icon-emoji"></span> <div class="card-content">
+            <img src="amigo.jpg" alt="Foto de Amigo 4">
+            <h3>Amigo 4</h3>
+            </div>
+            <p>Un dulce regalo comestible.</p>
+        </div>
+        -->
+    </div>
+
+    <script>
+        // --- 1. FUNCIONES DE UTILERÍA (DEFINIDAS PRIMERO) ---
+
+        function adjustSnowflakeHeight() {
+            const snowflakes = document.querySelector('.snowflakes');
+            // document.body.scrollHeight da la altura total del contenido, incluyendo lo que no se ve.
+            const totalHeight = document.body.scrollHeight;
+            snowflakes.style.height = `${totalHeight}px`;
+        }
+        
+        function createSnowflake() {
+            const snowflake = document.createElement('div');
+            snowflake.className = 'snowflake';
+            snowflake.innerHTML = '•'; 
+            const startX = Math.random() * 100;
+            snowflake.style.left = `${startX}vw`;
+            const size = Math.random() * 0.5 + 0.8; 
+            snowflake.style.fontSize = `${size}em`;
+            const duration = Math.random() * 10 + 10; 
+            snowflake.style.animationDuration = `${duration}s`;
+            const delay = Math.random() * 10;
+            snowflake.style.animationDelay = `${delay}s`;
+            return snowflake;
+        }
+
+        function initSnowfall() {
+            const snowfallContainer = document.querySelector('.snowflakes');
+            const numberOfSnowflakes = 50; 
+            for (let i = 0; i < numberOfSnowflakes; i++) {
+                snowfallContainer.appendChild(createSnowflake());
+            }
+        }
+
+        // --- 2. CÓDIGO DEL MODAL (Mantenido) ---
+
+        const modal = document.getElementById('user-modal');
+        const closeBtn = document.querySelector('.close-btn');
+
+        function openModal(name, imgSrc, basicInfo, fullInfo) {
+            const modalHeader = document.querySelector('.modal-header');
+            const modalBody = document.querySelector('.modal-body');
+            
+            document.body.classList.add('modal-open');
+
+            const formattedBasicInfo = basicInfo
+                .split(', ') 
+                .map(item => {
+                    const parts = item.split(': '); 
+                    if (parts.length === 2) {
+                        return `<strong>${parts[0]}:</strong><br> ${parts[1]}`;
+                    }
+                    return item; 
+                })
+                .join('<br>'); 
+
+           modalHeader.innerHTML =
+                '<div class="modal-title">'+
+                    '<h3 class="modal-title-h3">'+name+'</h3>'+
+                '</div>'+
+                '<div class="modal-header-content-wrapper">'+
+                    '<div class="modal-visual-info">'+
+                        '<img src="'+imgSrc+'" alt="Foto de '+name+'" class="modal-img">'+
+                        '<div class="modal-info-top">'+
+                            '<p>'+formattedBasicInfo+'</p>'
+                        '</div>'+
+                    '</div>'+
+                '</div>'+
+                '<div class="modal-divider"></div>';
+
+            modalBody.innerHTML = 
+                '<h4>Detalle del Amigo Secreto:</h4>'+
+                '<p>'+fullInfo+'</p>';
+
+            modal.style.display = 'flex';
+        }
+
+        closeBtn.onclick = function () {
+            modal.style.display = 'none';
+        }
+
+        window.onclick = function (event) {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        }
+        
+        // --- 3. BLOQUE PRINCIPAL DE CARGA (document.addEventListener('DOMContentLoaded')) ---
+        // Este bloque ahora contiene toda la lógica de inicio.
+
+        function activateChristmasDayMode() {
+            const today = new Date();
+            // Diciembre es 11, día 25.
+            const isChristmasDay = today.getMonth() === 11 && today.getDate() === 19;
+            // Para pruebas puedes cambiar a: const isChristmasDay = true; 
+
+            if (isChristmasDay) {
+                // 1. CAMBIAR EL TÍTULO
+                const mainTitle = document.querySelector('.titulo-rojo-navidad');
+                if (mainTitle) {
+                    mainTitle.innerHTML = '¡Es Hoy! 🎅🎁';
+                    mainTitle.style.fontSize = '5em'; 
+                    mainTitle.style.color = 'var(--verde-navidad)'; 
+                }
+                
+                // 2. REEMPLAZAR DECORACIONES DEL HEADER
+                const arbolDecor = document.querySelectorAll('.arbol-decor');
+                arbolDecor.forEach(decor => {
+                    decor.innerHTML = '🦌'; // Renos
+                    decor.style.color = 'var(--rojo-navidad)'; 
+                });
+
+                const estrellaDecor = document.querySelectorAll('.estrella-decor');
+                estrellaDecor.forEach(decor => {
+                    decor.innerHTML = '🎁'; // Regalos
+                    decor.style.fontSize = '3em';
+                });
+
+                // 3. ACTIVAR EFECTO VISUAL
+                document.body.style.backgroundImage = 'radial-gradient(circle, rgba(255,255,255,0.3) 1px, transparent 1px)';
+                document.body.style.backgroundSize = '50px 50px';
+                document.body.style.animation = 'none'; 
+                
+                // Opcional: Cambiar el color del borde de las tarjetas
+                document.documentElement.style.setProperty('--azul-hielo-vivo', 'var(--rojo-navidad)');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const iconList = ["🎅", "🎁", "🔔", "✨", "⛄", "🦌", "☕", "❄️", "🧤", "🎄", "🌟", "🍬"];
+            const grid = document.querySelector('.product-grid');
+
+            // 1. INICIALIZAR NIEVE INMEDIATAMENTE
+            initSnowfall();
+
+            activateChristmasDayMode();
+            
+            // 2. AÑADIR LISTENER DE REDIMENSIONAMIENTO (resize)
+            // Esto es crucial para reajustar la altura si el usuario cambia el tamaño de la ventana (o gira el móvil)
+            window.addEventListener('resize', () => {
+                // Usamos setTimeout para dar tiempo a que el navegador termine el cálculo de layout
+                setTimeout(adjustSnowflakeHeight, 50);
+            });
+
+            // 3. CARGAR DATOS (fetch)
+            fetch('datos.json')
+                .then(response => response.json())
+                .then(data => {
+                    data.forEach(amigo => {
+                        const card = document.createElement('div');
+                        card.className = 'product-card';
+                        // ... (resto de la lógica de la tarjeta) ...
+                        const randomIcon = iconList[Math.floor(Math.random() * iconList.length)];
+                        card.onclick = () => openModal(
+                            amigo.Nombre_ApellidoPaterno,
+                            'amigo.jpg',
+                            `Edad: ${amigo.edad}, Hobbies: ${amigo.hobbies}, Área: ${amigo.Area}`,
+                            amigo.detalleSecreto
+                        );
+                        card.innerHTML = `
+                            <span class="card-icon-emoji">${randomIcon}</span>
+                            <div class="card-content">
+                                <img src="amigo.jpg" alt="Foto de ${amigo.Nombre_ApellidoPaterno}">
+                                <h3>${amigo.Nombre_ApellidoPaterno}</h3>
+                            </div>
+                            <p>${amigo.Area.split('.')[0]}</p>
+                        `;
+                        grid.appendChild(card);
+                    });
+                    // ✅ AJUSTE FINAL: Se llama después de que las tarjetas están en el DOM.
+                })
+                .catch(error => {
+                    console.error('Error al cargar datos.json:', error);
+                    grid.innerHTML = '<p>No se pudieron cargar los datos del intercambio.</p>';
+                });
+            setTimeout(adjustSnowflakeHeight, 50);
+            // 4. LOADER
+            const loader = document.getElementById('christmas-loader');
+            setTimeout(() => {
+                loader.style.opacity = '0';
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                }, 500);
+            }, 1500);
+
+            // 5. LISTENERS DEL MODAL (Añadimos los listeners al DOMContentLoaded para que funcionen)
+            closeBtn.onclick = function () {
+                modal.style.display = 'none';
+                document.body.classList.remove('modal-open');
+            }
+
+            window.onclick = function (event) {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                    document.body.classList.remove('modal-open');
+                }
+            }
+
+        });
+    </script>
+</body>
+</html>

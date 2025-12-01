@@ -1,0 +1,806 @@
+@import url('https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@400;700&family=Itim&family=Luckiest+Guy&display=swap');
+
+:root {
+  --azul-nieve: #d0e8f2;
+  --azul-profundo: #2c3e50;
+  --azul-hielo: #a2d2ff;
+  --azul-hielo-vivo: #236bae;
+  --azul-hielo-vivo1: #47c5bf;
+  --plateado: #e0e0e0;
+  --blanco-nieve: #f9f9f9;
+  --rojo-navidad: #c0392b;
+  --verde-navidad: #27ae60;
+  --azul-suave-claro: #c0e0ff;
+  --modal-bg: rgba(44, 62, 80, 0.8); /* Fondo oscuro para el modal/loader */
+}
+
+/*html {
+    background-attachment: fixed; 
+    background: linear-gradient(135deg, #862929, #3186ab);
+    animation: fondoNavidad 10s ease infinite;
+}*/
+
+html, body {
+    width: 100%; 
+}
+
+/* --- ESTILOS BASE Y CUERPO (CORREGIDO) --- */
+body {
+
+    /* ... otros estilos ... */
+    background-attachment: fixed; 
+    background: linear-gradient(135deg, #f9f9f9, #d0e8f2);
+    animation: fondoNavidad 10s ease infinite;
+    font-family: 'Itim', cursive; 
+    color: var(--azul-profundo);
+    margin: 0;
+    padding: 0;
+    /* 🔑 CORRECCIÓN CLAVE: EVITA LA BARRA HORIZONTAL*/ 
+    overflow-x: hidden;
+}
+
+/* ------------------- 1. LOADER STYLES ------------------- */
+#christmas-loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--modal-bg); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+#christmas-loader img {
+    background: transparent; 
+    max-width: 80%;
+    max-height: 80%;
+    box-shadow: none; 
+    animation: pulse 2s infinite ease-in-out;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+/*.navidad-header-container {
+    position: relative; 
+    width: 100%;
+    max-width: 1200px; 
+    margin: 0 auto; 
+    min-height: 400px; 
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+}*/
+
+/*.navidad-monitor-img {
+    width: 100%; 
+    height: auto;
+    display: block; 
+    position: absolute; 
+    top: 0;
+    left: 0;
+    z-index: 1; 
+}*/
+
+/*
+.navidad-header-content {
+    position: relative; 
+    z-index: 2; 
+    text-align: center;
+    padding: 60px 20px 80px 20px; 
+    color: var(--blanco-nieve);
+    width: 80%; 
+    max-width: 800px; 
+}
+*/
+
+/*
+.navidad-header h1 {
+    font-family: 'Luckiest Guy', cursive;
+    font-size: 4em; 
+    margin: 0; 
+    animation: fadeInDown 1s ease-out;
+    color: var(--azul-profundo); 
+    -webkit-text-stroke: 1.5px var(--blanco-nieve); 
+    text-stroke: 1.5px var(--blanco-nieve);
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.7); 
+    line-height: 1; 
+}*/
+
+
+
+.navidad-header {
+    text-align: center;
+    /* Ajusta el padding para centrar el texto mejor dentro del área visible de la imagen */
+    /* Considera si la imagen tiene espacio en blanco arriba; si no, baja el padding-top */
+    padding: 60px 20px 80px 20px; 
+    
+    /* Fondo de nieve y bokeh - Asegúrate de que 'header2.png' sea la imagen del paisaje invernal */
+    background: url('header4.png') no-repeat center/cover;
+    
+    color: var(--blanco-nieve);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+    
+    /* *** CAMBIO CLAVE 1: ELIMINAR EL BOX-SHADOW *** */
+    /* box-shadow: 0 4px 12px rgba(0,0,0,0.3); */ /* COMENTA O ELIMINA esta línea */
+    
+    position: relative; 
+    overflow: hidden;
+    
+    /* *** CAMBIO CLAVE 2: ELIMINAR EL CLIP-PATH *** */
+    /* Ya no necesitas el clip-path porque la forma de la nieve ya está en tu imagen de fondo */
+    /* clip-path: ellipse(100% 70% at 50% 0%); */ /* COMENTA O ELIMINA esta línea */
+    
+    margin-bottom: 0; /* Asegura que no haya margen extra abajo del header */
+    display: flex; 
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* Aumenta la altura mínima para que se vea más de la imagen y el texto */
+    min-height: 400px; /* Ajusta este valor si la imagen se ve cortada o el texto está muy apretado */
+}
+
+.navidad-header h1 {
+  font-family: 'Luckiest Guy', cursive; /* Aplicamos la nueva fuente */
+  font-size: 3.5em; /* Un poco más grande para que destaque */
+  margin: 0; /* Eliminar márgenes por defecto para mejor alineación */
+  animation: fadeInDown 1s ease-out;
+  color: var(--azul-profundo); 
+  -webkit-text-stroke: 1.5px var(--blanco-nieve); 
+  /*text-stroke: 1.5px var(--blanco-nieve);*/
+  text-shadow: 2px 2px 5px rgba(0,0,0,0.7); 
+  line-height: 1; /* Para controlar el espacio vertical */
+}
+
+.navidad-header p {
+  font-family: 'Mountains of Christmas', cursive; /* Fuente para el párrafo */
+  font-size: 1.2em;
+  animation: fadeInUp 1s ease-out;
+  color: var(--blanco-nieve); 
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+  margin-top: 15px; 
+}
+
+/*.header-decor {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 10px 0;
+}*/
+
+/*.header-content {
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    gap: 10px; 
+    z-index: 1; 
+}*/
+
+.header-content-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px; /* Espacio entre las líneas de texto */
+    width: 100%; /* Para que ocupe todo el ancho permitido */
+    max-width: 800px;
+}
+
+.header-line {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* Espacio entre el texto y los iconos */
+}
+
+/*.arboles {
+    Para posicionar los árboles si los quieres en las esquinas
+    position: absolute;
+    top: 20px;
+    width: 100%;
+    justify-content: space-between;
+}*/
+.arbol-decor, .estrella-decor {
+    font-size: 5.5em; /* Tamaño de las decoraciones */
+    animation: sparkle 2s infinite ease-in-out; 
+    z-index: 10; 
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5); 
+    /* Ajustes para la alineación vertical */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 1em; /* Ajusta la altura para que el icono no se "salga" */
+}
+
+.arbol-decor:nth-of-type(1) { animation-delay: 0.2s; }
+.arbol-decor:nth-of-type(2) { animation-delay: 0.7s; }
+.estrella-decor:nth-of-type(1) { animation-delay: 0.4s; }
+.estrella-decor:nth-of-type(2) { animation-delay: 0.9s; }
+
+
+.titulo-rojo-navidad {
+    font-family: 'Luckiest Guy', cursive;
+    /* CAMBIO: Ligeramente más grande */
+    font-size: 5em; 
+    color: var(--rojo-navidad); 
+    margin: 0; 
+    -webkit-text-stroke: 2px var(--blanco-nieve); 
+    /*text-stroke: 2px var(--blanco-nieve);*/
+    text-shadow: 3px 3px 8px rgba(0,0,0,0.7);
+    letter-spacing: 3px;
+    animation: pulse 2s infinite; 
+    line-height: 1;
+}
+
+.estrella {
+    font-size: 2.0em;
+    animation: sparkle 2s infinite ease-in-out;
+}
+
+/* --- PRODUCT GRID --- */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px; 
+    padding: 40px;
+    max-width: 1000px;
+    /*width: 90%;*/
+    margin: 0 auto;
+}
+
+/* --- PRODUCT CARD (Borde Celeste a Azul Sólido) --- */
+.product-card {
+    border: 8px solid var(--azul-hielo-vivo); 
+    background: linear-gradient(145deg, var(--blanco-nieve), var(--azul-nieve));
+    border-radius: 50px; 
+    padding: 20px;
+    box-shadow: 0 8px 20px rgba(44, 62, 80, 0.15);
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    text-align: center; 
+    cursor: pointer;
+}
+
+.product-card:hover {
+    transform: translateY(-5px) scale(1.03); 
+    border-color: var(--azul-profundo); 
+    box-shadow: 0 0 0 5px var(--azul-profundo), 
+                0 15px 30px rgba(44, 62, 80, 0.5); 
+}
+
+.card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.product-card img {
+    width: 120px; 
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 6px solid var(--rojo-navidad); 
+    box-shadow: 0 0 10px rgba(44, 62, 80, 0.2);
+    margin-bottom: 15px;
+    padding: 2px;
+    filter: blur(0px) !important; 
+    transition: filter 0.5s ease;
+}
+
+/* 
+.product-card::before {
+    content: attr(data-icon); /
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 38px;
+    
+    background-color: var(--blanco-nieve); 
+    border: 5px solid var(--azul-hielo-vivo); 
+    border-radius: 50%;
+    padding: 5px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    z-index: 10;
+}*/
+
+.card-icon-emoji {
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 38px;
+    background-color: var(--blanco-nieve);
+    border: 5px solid var(--azul-hielo-vivo);
+    border-radius: 50%;
+    padding: 5px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    z-index: 10;
+}
+
+
+.product-card h3 {
+    font-size: 2.5em;
+    color: var(--azul-profundo);
+    margin-top: 0;
+}
+
+.product-card p {
+    font-size: 2.0em;
+    color: var(--azul-profundo);
+    margin-top: 0;
+}
+
+/* --- ANIMACIÓN DE HOVER (Cubre el icono con "Feliz Navidad") --- */
+.product-card:hover::after {
+    content: "¡Feliz Navidad!";
+    position: absolute;
+    /* Ajustado para que aparezca un poco más abajo y no tape el emoji */
+    top: 15px; 
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.3em;
+    font-weight: bold;
+    color: var(--rojo-navidad); /* Color de texto rojo para el mensaje */
+    background: var(--blanco-nieve); 
+    padding: 5px 10px;
+    border-radius: 5px;
+    opacity: 0;
+    animation: fadeInOut 1.5s ease-out forwards; 
+    pointer-events: none;
+    z-index: 20;
+}
+
+/*
+.snowflake {
+  display: none;
+}
+.snowflake:nth-child(1), .snowflake:nth-child(2), .snowflake:nth-child(3), .snowflake:nth-child(4) {
+  display: none;
+}
+*/
+
+/* ------------------- 2. MODAL STYLES ------------------- */
+
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 100; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: var(--modal-bg); 
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background: linear-gradient(160deg, var(--blanco-nieve), var(--azul-suave-claro));
+    border-radius: 25px;
+    padding: 30px;
+    border: 5px solid var(--azul-hielo);
+    width: 90%;
+    max-width: 550px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+    animation: zoomIn 0.3s ease-out;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-height: 80vh;
+    overflow-y: hidden;
+}
+
+/*.modal-img {
+    width: 450px; 
+    height: 450px;
+    object-fit: cover;
+    border-radius: 20px; 
+    border: 5px solid var(--rojo-navidad); 
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}*/
+
+.close-btn {
+    color: var(--azul-profundo);
+    float: right;
+    font-size: 36px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: var(--rojo-navidad);
+    text-decoration: none;
+}
+
+.modal-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    border-bottom: 2px solid var(--azul-hielo);
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+.modal-title-h3 {
+    font-size: 2.8em; 
+    color: var(--azul-profundo);
+    margin: 0;
+    padding-left: 0px; 
+}
+
+.modal-visual-info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+}
+
+.modal-img {
+    width: 160px; 
+    height: 160px;
+    object-fit: cover;
+    border-radius: 20px; /* Vuelve a ser circular */
+    border: 3px solid var(--rojo-navidad); 
+    margin-bottom: 0; 
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    filter: none;
+    transition: all 0.3s ease;
+}
+/*
+.modal-img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid var(--rojo-navidad);
+}*/
+
+.modal-info-top {
+    flex-grow: 1;
+    text-align: left;
+    padding-top: 5px;
+}
+
+.modal-info-top h3 {
+    margin: 0;
+    font-size: 1.8em;
+    color: var(--azul-profundo);
+}
+
+.modal-info-top p {
+    font-size: 1.1em;
+    line-height: 1.8;
+    color: var(--azul-profundo);
+    font-family: Arial, sans-serif;
+    font-weight: normal;
+}
+
+.modal-body {
+    width: 100%; /* Asegura que el cuerpo ocupe todo el ancho */
+}
+
+.modal-body h4 {
+    color: var(--rojo-navidad);
+    font-size: 1.4em;
+    margin-bottom: 10px;
+}
+.modal-body p {
+    font-size: 1.1em;
+    line-height: 1.6;
+    color: var(--azul-profundo);
+    font-family: Arial, sans-serif;
+}
+
+.snowflakes {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Crucial para no bloquear clics */
+    z-index: 99; /* Por debajo del loader y el modal */
+}
+
+.snowflake {
+    color: var(--azul-hielo-vivo1);
+    font-size: 1.5em; /* Tamaño base del punto (copo) */
+    position: absolute;
+    top: -20px;
+    opacity: 0.7; /* Opacidad sutil */
+    animation: fall linear infinite;
+    text-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+}
+
+.modal-open {
+    overflow-y: hidden;
+    /* Añadir padding-right compensa el espacio de la barra de scroll al ocultarla */
+}
+
+@keyframes fall {
+    0% { top: -20px; opacity: 0.5; }
+    100% { top: 100%; opacity: 0.1; }
+}
+
+/* --- KEYFRAMES --- */
+@keyframes fadeInOut {
+    0% { opacity: 0; transform: translate(-50%, 10px); }
+    30% { opacity: 1; transform: translate(-50%, 0); }
+    70% { opacity: 1; transform: translate(-50%, 0); }
+    100% { opacity: 0; transform: translate(-50%, -10px); }
+}
+@keyframes sparkle {
+    0%, 100% { transform: scale(1); opacity: 0.8; }
+    50% { transform: scale(1.3); opacity: 1; }
+}
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fall {
+    0% { top: -20px; transform: rotate(0deg); opacity: 0.8; }
+    50% { transform: rotate(180deg); opacity: 1; }
+    100% { top: 100%; transform: rotate(360deg); opacity: 0; }
+}
+@keyframes zoomIn {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes fondoNavidad {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+
+/* --- MEDIA QUERIES MEJORADAS (Responsive Design) --- */
+
+@media (max-width: 1024px) {
+    .product-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 25px;
+        padding: 30px;
+        /*width: 80%;*/
+    }
+}
+
+@media (max-width: 885px) {
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+        padding: 30px;
+        /*width: 80%;*/
+    }
+}
+
+@media (max-width: 768px) {
+    .arbol-decor, .estrella-decor {
+        font-size: 3.5em; /* ⬅️ Mantenemos un tamaño más grande que el texto, pero no excesivo */
+    }
+
+    .estrella {
+    font-size: 1.7em;
+    }
+
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columnas en tablets */
+        gap: 20px;
+        padding: 20px;
+        /*width: 90%;*/
+    }
+
+    .product-card img {
+        width: 100px; 
+        height: 100px;
+        margin-bottom: 10px;
+    }
+
+    .product-card h3 {
+        font-size: 2.0em; /* De 2.5em a 2.0em */
+    }
+
+    .product-card p {
+        font-size: 1.5em; /* De 2.0em a 1.5em */
+    }
+
+    .navidad-header h1 {
+        /* Tamaño para Tablets */
+        font-size: 3em; 
+    }
+    
+    .titulo-rojo-navidad {
+        /* Tamaño para Tablets */
+        font-size: 4em;
+    }
+    
+    .navidad-header p {
+        /* Tamaño para Tablets */
+        font-size: 1.2em;
+    }
+    
+    .navidad-header {
+        /* Reducimos un poco la altura en tablets */
+        min-height: 350px; 
+    }
+
+    .modal-content {
+        width: 80%;
+        height: 80%;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .estrella {
+    font-size: 0.0em;
+    }
+    
+    .arbol-decor, .estrella-decor {
+        font-size: 2em; /* ⬅️ Mantenemos un tamaño más grande que el texto, pero no excesivo */
+    }
+    /*.product-grid {
+        grid-template-columns: 1fr; 
+        padding: 15px;
+        width: 100px
+    }*/
+
+    .product-grid {
+        grid-template-columns: 1fr; 
+        padding: 15px;
+        margin: 0 auto;
+    }
+
+    .product-card {
+        padding: 15px;
+        /*max-width: 300px;*/ /* Limitar el ancho máximo en móviles (opcional) */
+        /*width: 90%;*/ /* Centrar la tarjeta si se usa max-width */
+        max-width: 100%;
+        /*margin: 0 auto;*/
+    }
+    
+    /* 🔑 CAMBIO 2: Asegurar que la imagen sea pequeña */
+    .product-card img {
+        width: 80px; 
+        height: 80px;
+        margin-bottom: 5px;
+        border-width: 4px; /* Borde más fino */
+    }
+    
+    /* 🔑 CAMBIO 3: Reducir más los textos de la tarjeta */
+    .product-card h3 {
+        font-size: 1.8em; 
+    }
+
+    .product-card p {
+        font-size: 1.3em; 
+    }
+    
+    /* 🔑 CAMBIO 4: Ajustar la posición del emoji superior */
+    .card-icon-emoji {
+        top: -30px; 
+        font-size: 32px;
+        border-width: 4px;
+        padding: 4px;
+    }
+    
+    .navidad-header h1 {
+        /* Tamaño para Móviles pequeños */
+        font-size: 2.2em;
+    }
+    
+    .titulo-rojo-navidad {
+        /* Tamaño para Móviles pequeños */
+        font-size: 3em;
+    }
+
+    .navidad-header p {
+        /* Tamaño para Móviles pequeños */
+        font-size: 1em;
+    }
+    
+    .navidad-header {
+        /* Reducimos la altura mínima para móviles */
+        min-height: 250px; 
+        padding: 40px 15px 60px 15px; /* Reducimos el padding */
+    }
+    
+    /* El ícono de Santa en la tarjeta */
+    .product-card::before {
+        top: -30px; /* Lo subimos un poco */
+        font-size: 32px;
+    }
+    
+    .product-card {
+        padding: 15px;
+    }
+
+    .modal-content {
+        width: 70%;
+        height: 70%;
+    }
+
+    .modal-header {
+        align-items: center; /* Centra el contenido en móvil */
+        padding-bottom: 15px;
+        width: 90%;
+    }
+
+    .modal-title-h3 {
+        font-size: 2em; 
+        padding-left: 0; /* Sin padding lateral */
+    }
+
+    .modal-visual-info {
+        align-items: center;
+        text-align: center;
+        gap: 15px;
+    }
+    
+    /* 🔑 CENTRAMOS EL TEXTO BREVE CUANDO ESTÁ APILADO */
+    .modal-info-top {
+        text-align: center;
+        padding-top: 0;
+    }
+
+    .snowflake {
+        font-size: 0.8em; /* Copos más pequeños en móviles */
+    }
+}
+
+@media (min-width: 1368px) {
+
+    /* 1. Expandir el Header (Aprovecha más espacio vertical) */
+    .navidad-header {
+        min-height: 500px; 
+        justify-content: center;
+    }
+
+    /* 2. Aumentar el Grid a 4 Columnas */
+    .product-grid {
+        /* Define 4 columnas de igual ancho (1fr) */
+        grid-template-columns: repeat(4, 1fr); 
+        /* Aumenta la separación entre tarjetas */
+        gap: 35px; 
+        /* Permite que el grid use más ancho para verse mejor en 1920px */
+        max-width: 1300px; 
+        padding: 50px 40px;
+    }
+    
+    /* 3. Ajustes de la Tarjeta para 4 Columnas (Opcional: asegurar que no sean demasiado grandes/pequeñas) */
+    .product-card img {
+        width: 100px; 
+        height: 100px;
+    }
+    
+    .product-card h3 {
+        font-size: 2.2em;
+    }
+    
+    .product-card p {
+        font-size: 1.6em;
+    }
+}

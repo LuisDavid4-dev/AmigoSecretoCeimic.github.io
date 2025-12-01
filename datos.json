@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "edad": 28,
+    "hobbies": "Tecnología",
+    "detalleSecreto": "Le encanta el café y los libros. El regalo debe ser funcional y elegante. Evitar cosas muy personales.",
+    "Nombre_ApellidoPaterno": "Amigo 1",
+    "Area": "Sistemas"
+  },
+  {
+    "id": 2,
+    "edad": 35,
+    "hobbies": "Jardinería",
+    "detalleSecreto": "Necesita algo para su escritorio. Algo que aporte paz y naturaleza a su espacio de trabajo.",
+    "Nombre_ApellidoPaterno": "Amigo 2",
+    "Area": "Administración"
+  },
+  {
+    "id": 3,
+    "edad": 22,
+    "hobbies": "Viajar",
+    "detalleSecreto": "Algo azul o relacionado con el mar. Un accesorio de viaje pequeño y útil será bien recibido.",
+    "Nombre_ApellidoPaterno": "Amigo 3",
+    "Area": "Marketing"
+  },
+  {
+    "id": 4,
+    "edad": 30,
+    "hobbies": "Cocina",
+    "detalleSecreto": "Un dulce regalo comestible. Prefiere lo artesanal o gourmet.",
+    "Nombre_ApellidoPaterno": "Amigo 4",
+    "Area": "Recursos Humanos"
+  }
+]
