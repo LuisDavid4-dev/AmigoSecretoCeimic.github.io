@@ -36,51 +36,31 @@
             
             </div>
     </header>
+
+    <div id="search-container">
+        <input type="text" id="user-search-input" placeholder="Buscar amigo secreto...">
+        <button id="clear-search-btn" style="display: none;">&times;</button>
+    </div>
+    
     <div class="product-grid">
-        <!--
-        <div class="product-card" onclick="openModal('Amigo 1', 'https://i.imgur.com/8uO0M3j.jpg', 'Edad: 28, Gustos: Tecnología, Color Favorito: Azul', 'Le encanta el café y los libros. El regalo debe ser funcional y elegante. Evitar cosas muy personales.')">
-            <span class="card-icon-emoji"></span>  <div class="card-content">
-            <img src="amigo.jpg" alt="Foto de Amigo 1">
-            <h3>Amigo 1</h3>
-            </div>
-            <p>Le encanta el café y los libros.</p> 
-        </div>
-
-        <div class="product-card" onclick="openModal('Amigo 2', 'https://i.imgur.com/8uO0M3j.jpg', 'Edad: 35, Gustos: Jardinería, Color Favorito: Verde', 'Necesita algo para su escritorio. Algo que aporte paz y naturaleza a su espacio de trabajo.')">
-            <span class="card-icon-emoji"></span>  <div class="card-content">
-            <img src="amigo.jpg" alt="Foto de Amigo 2">
-            <h3>Amigo 2</h3>
-            </div>
-            <p>Necesita algo para su escritorio.</p>
-        </div>
-
-        <div class="product-card" onclick="openModal('Amigo 3', 'https://i.imgur.com/8uO0M3j.jpg', 'Edad: 22, Gustos: Viajar, Color Favorito: Amarillo', 'Algo azul o relacionado con el mar. Un accesorio de viaje pequeño y útil será bien recibido.')">
-            <span class="card-icon-emoji"></span>  <div class="card-content">
-            <img src="amigo.jpg" alt="Foto de Amigo 3">
-            <h3>Amigo 3</h3>
-            </div>
-            <p>Algo azul o relacionado con el mar.</p>
-        </div>
-
-        <div class="product-card" onclick="openModal('Amigo 4', 'https://i.imgur.com/8uO0M3j.jpg', 'Edad: 30, Gustos: Cocina, Color Favorito: Rojo', 'Un dulce regalo comestible. Prefiere lo artesanal o gourmet.')">
-            <span class="card-icon-emoji"></span> <div class="card-content">
-            <img src="amigo.jpg" alt="Foto de Amigo 4">
-            <h3>Amigo 4</h3>
-            </div>
-            <p>Un dulce regalo comestible.</p>
-        </div>
-        -->
     </div>
 
     <script>
         // --- 1. FUNCIONES DE UTILERÍA (DEFINIDAS PRIMERO) ---
 
         function adjustSnowflakeHeight() {
-            const snowflakes = document.querySelector('.snowflakes');
-            // document.body.scrollHeight da la altura total del contenido, incluyendo lo que no se ve.
-            const totalHeight = document.body.scrollHeight;
-            snowflakes.style.height = `${totalHeight}px`;
-        }
+            const snowflakes = document.querySelector('.snowflakes');
+            // 1. Altura total del contenido (incluye el scroll).
+            const totalContentHeight = document.body.scrollHeight;
+            
+            // 2. Altura visible de la ventana.
+            const minHeight = window.innerHeight;
+            
+            // 🔑 CORRECCIÓN: Usamos el máximo entre la altura del contenido y la altura visible de la ventana.
+            const requiredHeight = Math.max(totalContentHeight, minHeight);
+
+            snowflakes.style.height = `${requiredHeight}px`;
+        }
         
         function createSnowflake() {
             const snowflake = document.createElement('div');
@@ -158,8 +138,16 @@
             }
         }
         
+        let allUserData = []; // Almacena los datos originales de datos.json
+        let isChristmasDay = false;
         // --- 3. BLOQUE PRINCIPAL DE CARGA (document.addEventListener('DOMContentLoaded')) ---
         // Este bloque ahora contiene toda la lógica de inicio.
+
+        const searchInput = document.getElementById('user-search-input');
+        const clearButton = document.getElementById('clear-search-btn');
+        const grid = document.querySelector('.product-grid');
+
+        const FIXED_ICON_MAP = ["🌟", "🦌", "🎁", "🔔", "❄️", "🧤", "⛄", "☕", "🎄", "🍬"];
 
         function activateChristmasDayMode() {
             const today = new Date();
@@ -199,6 +187,78 @@
             }
         }
 
+        function renderCards(data) {
+            grid.innerHTML = ''; 
+
+            if (data.length === 0) {
+                grid.innerHTML = '<p class="no-results-message">🥺 ¡Oh no! No se encontraron usuarios que coincidan con la búsqueda.</p>';
+                return;
+            }
+
+            data.forEach((amigo, index) => {
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                
+                // 🔑 Lógica de Ícono Fijo basado en el índice (para que no cambie al filtrar)
+                // Se usa el ID o el índice para calcular un valor entre 0 y 9.
+                // Si el JSON tiene un ID, sería mejor usarlo. Aquí usamos el índice:
+                const fixedIconIndex = amigo.id % FIXED_ICON_MAP.length; 
+                const defaultCardIcon = FIXED_ICON_MAP[fixedIconIndex];
+                
+                // Lógica final del Ícono: Si es Navidad, usa Papá Noel, sino, usa el ícono fijo.
+                const cardIcon = isChristmasDay ? '🎅' : defaultCardIcon;
+                
+                card.onclick = () => openModal(
+                    amigo.Nombre_ApellidoPaterno,
+                    'amigo.jpg',
+                    `Edad: ${amigo.edad}, Hobbies: ${amigo.hobbies}, Área: ${amigo.Area}`,
+                    amigo.detalleSecreto
+                );
+                
+                card.innerHTML = 
+                    '<span class="card-icon-emoji">'+cardIcon+'</span>'+
+                    '<br>'+
+                    '<div class="card-content">'+
+                        '<img src="amigo.jpg" alt="Foto de '+amigo.Nombre_ApellidoPaterno+'">'+
+                        '<h3>'+amigo.Nombre_ApellidoPaterno+'</h3>'+
+                    '</div>'+
+                    '<p>'+amigo.Area.split('.')[0]+'</p>';
+                    
+                grid.appendChild(card);
+            });
+            
+            // Ajusta la altura de la nieve después de renderizar el contenido
+            setTimeout(adjustSnowflakeHeight, 50);
+        }
+
+
+        // --- FUNCIÓN: FILTRA EL CONTENIDO ---
+        function filterCards() {
+            const query = searchInput.value.toLowerCase().trim();
+            
+            // Controlar la visibilidad de la "X"
+            if (query.length > 0) {
+                clearButton.style.display = 'inline-block';
+            } else {
+                clearButton.style.display = 'none';
+            }
+
+            if (query === '') {
+                // Si el campo está vacío, muestra todos los datos
+                renderCards(allUserData);
+                return;
+            }
+
+            // Filtra los datos: busca por Nombre_ApellidoPaterno
+            const filteredData = allUserData.filter(amigo => {
+                const fullName = `${amigo.Nombre_ApellidoPaterno || ''}`.toLowerCase();
+                return fullName.includes(query);
+            });
+
+            // Vuelve a renderizar con los datos filtrados
+            renderCards(filteredData);
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
             const iconList = ["🎅", "🎁", "🔔", "✨", "⛄", "🦌", "☕", "❄️", "🧤", "🎄", "🌟", "🍬"];
             const grid = document.querySelector('.product-grid');
@@ -215,46 +275,45 @@
                 setTimeout(adjustSnowflakeHeight, 50);
             });
 
+            searchInput.addEventListener('input', filterCards); 
+        
+            // Botón X: borra y restablece el filtro
+            clearButton.addEventListener('click', () => { 
+                searchInput.value = '';
+                filterCards();
+            });
+
+            searchInput.addEventListener('focus', () => {
+                // Usamos el contenedor para asegurarnos de que la barra de búsqueda y el botón 'X' 
+                // se vean cómodamente en la parte superior de la pantalla.
+                const searchContainer = document.getElementById('search-container');
+                searchContainer.scrollIntoView({ 
+                    behavior: 'smooth', // Animación suave
+                    block: 'start'      // Alinea el elemento en la parte superior del viewport
+                });
+            });
+
             // 3. CARGAR DATOS (fetch)
             fetch('datos.json')
                 .then(response => response.json())
                 .then(data => {
-                    data.forEach(amigo => {
-                        const card = document.createElement('div');
-                        card.className = 'product-card';
-                        // ... (resto de la lógica de la tarjeta) ...
-                        const randomIcon = iconList[Math.floor(Math.random() * iconList.length)];
-                        card.onclick = () => openModal(
-                            amigo.Nombre_ApellidoPaterno,
-                            'amigo.jpg',
-                            `Edad: ${amigo.edad}, Hobbies: ${amigo.hobbies}, Área: ${amigo.Area}`,
-                            amigo.detalleSecreto
-                        );
-                        card.innerHTML = `
-                            <span class="card-icon-emoji">${randomIcon}</span>
-                            <div class="card-content">
-                                <img src="amigo.jpg" alt="Foto de ${amigo.Nombre_ApellidoPaterno}">
-                                <h3>${amigo.Nombre_ApellidoPaterno}</h3>
-                            </div>
-                            <p>${amigo.Area.split('.')[0]}</p>
-                        `;
-                        grid.appendChild(card);
-                    });
+                    allUserData = data; 
+                
+                // Renderiza la lista completa al inicio
+                renderCards(allUserData);
                     // ✅ AJUSTE FINAL: Se llama después de que las tarjetas están en el DOM.
                 })
                 .catch(error => {
                     console.error('Error al cargar datos.json:', error);
                     grid.innerHTML = '<p>No se pudieron cargar los datos del intercambio.</p>';
                 });
-            setTimeout(adjustSnowflakeHeight, 50);
-            // 4. LOADER
-            const loader = document.getElementById('christmas-loader');
-            setTimeout(() => {
-                loader.style.opacity = '0';
-                setTimeout(() => {
-                    loader.style.display = 'none';
-                }, 500);
-            }, 1500);
+            const loader = document.getElementById('christmas-loader');
+            setTimeout(() => {
+                loader.style.opacity = '0';
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                }, 500);
+            }, 1500);
 
             // 5. LISTENERS DEL MODAL (Añadimos los listeners al DOMContentLoaded para que funcionen)
             closeBtn.onclick = function () {

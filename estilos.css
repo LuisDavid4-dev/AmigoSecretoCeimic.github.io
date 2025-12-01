@@ -21,6 +21,7 @@
 }*/
 
 html, body {
+    min-height: 100vh;
     width: 100%; 
 }
 
@@ -149,7 +150,7 @@ body {
 
 .navidad-header h1 {
   font-family: 'Luckiest Guy', cursive; /* Aplicamos la nueva fuente */
-  font-size: 3.5em; /* Un poco más grande para que destaque */
+  font-size: 4em; /* Un poco más grande para que destaque */
   margin: 0; /* Eliminar márgenes por defecto para mejor alineación */
   animation: fadeInDown 1s ease-out;
   color: var(--azul-profundo); 
@@ -283,14 +284,14 @@ body {
 }
 
 .product-card img {
-    width: 120px; 
-    height: 120px;
+    width: 140px; 
+    height: 140px;
     object-fit: cover;
     border-radius: 50%;
     border: 6px solid var(--rojo-navidad); 
     box-shadow: 0 0 10px rgba(44, 62, 80, 0.2);
     margin-bottom: 15px;
-    padding: 2px;
+    padding: 1px;
     filter: blur(0px) !important; 
     transition: filter 0.5s ease;
 }
@@ -534,6 +535,64 @@ body {
     /* Añadir padding-right compensa el espacio de la barra de scroll al ocultarla */
 }
 
+#search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 10px;
+    max-width: 800px;
+    margin: 0px auto 0px auto; /* Más margen inferior para separarlo de las tarjetas */
+    position: relative; /* Necesario para posicionar el botón X */
+}
+
+/* Estilo del input de texto */
+#user-search-input {
+    padding: 15px 40px 15px 20px; /* Más padding a la derecha para la X */
+    font-size: 1.1em;
+    font-family: 'Arial', sans-serif;
+    border: 3px solid var(--azul-hielo-vivo); /* Borde verde */
+    border-radius: 12px;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+#user-search-input:focus {
+    outline: none;
+    border-color: var(--azul-profundo); /* Resalta en rojo al enfocar */
+    box-shadow: 0 0 10px rgba(0, 98, 255, 0.3);
+}
+
+/* Estilo del botón de borrar (la X) */
+#clear-search-btn {
+    position: absolute;
+    right: 30px; /* Ajusta la posición a la derecha */
+    background: transparent;
+    color: var(--azul-profundo);
+    border: none;
+    padding: 5px;
+    font-weight: bold;
+    font-size: 1.8em;
+    cursor: pointer;
+    line-height: 1;
+    opacity: 0.7;
+    transition: opacity 0.2s, transform 0.2s;
+}
+
+#clear-search-btn:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+/* Mensaje de no resultados */
+.no-results-message {
+    text-align: center;
+    font-size: 1.6em;
+    color: var(--azul-profundo);
+    padding: 60px 20px;
+    grid-column: 1 / -1; /* Asegura que ocupe todo el ancho del grid */
+}
+
 @keyframes fall {
     0% { top: -20px; opacity: 0.5; }
     100% { top: 100%; opacity: 0.1; }
@@ -614,22 +673,21 @@ body {
     }
 
     .product-card img {
-        width: 100px; 
-        height: 100px;
-        margin-bottom: 10px;
+        width: 150px; 
+        height: 150px;
     }
 
     .product-card h3 {
-        font-size: 2.0em; /* De 2.5em a 2.0em */
+        font-size: 2.2em; /* De 2.5em a 2.0em */
     }
 
     .product-card p {
-        font-size: 1.5em; /* De 2.0em a 1.5em */
+        font-size: 1.7em; /* De 2.0em a 1.5em */
     }
 
     .navidad-header h1 {
         /* Tamaño para Tablets */
-        font-size: 3em; 
+        font-size: 3.5em; 
     }
     
     .titulo-rojo-navidad {
@@ -653,7 +711,7 @@ body {
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 540px) {
 
     .estrella {
     font-size: 0.0em;
@@ -682,21 +740,18 @@ body {
         /*margin: 0 auto;*/
     }
     
-    /* 🔑 CAMBIO 2: Asegurar que la imagen sea pequeña */
     .product-card img {
-        width: 80px; 
-        height: 80px;
-        margin-bottom: 5px;
-        border-width: 4px; /* Borde más fino */
+        width: 140px; 
+        height: 140px;
     }
     
-    /* 🔑 CAMBIO 3: Reducir más los textos de la tarjeta */
+
     .product-card h3 {
-        font-size: 1.8em; 
+        font-size: 2em; 
     }
 
     .product-card p {
-        font-size: 1.3em; 
+        font-size: 1.7em; 
     }
     
     /* 🔑 CAMBIO 4: Ajustar la posición del emoji superior */
@@ -709,7 +764,7 @@ body {
     
     .navidad-header h1 {
         /* Tamaño para Móviles pequeños */
-        font-size: 2.2em;
+        font-size: 2.8em;
     }
     
     .titulo-rojo-navidad {
@@ -771,6 +826,18 @@ body {
     }
 }
 
+@media (max-width: 450px) {
+    .navidad-header h1 {
+        /* Tamaño para Móviles pequeños */
+        font-size: 2.5em;
+    }
+    
+    .titulo-rojo-navidad {
+        /* Tamaño para Móviles pequeños */
+        font-size: 2.7em;
+    }
+}
+
 @media (min-width: 1368px) {
 
     /* 1. Expandir el Header (Aprovecha más espacio vertical) */
@@ -792,15 +859,15 @@ body {
     
     /* 3. Ajustes de la Tarjeta para 4 Columnas (Opcional: asegurar que no sean demasiado grandes/pequeñas) */
     .product-card img {
-        width: 100px; 
-        height: 100px;
+        width: 140px; 
+        height: 140px;
     }
     
     .product-card h3 {
-        font-size: 2.2em;
+        font-size: 2.5em;
     }
     
     .product-card p {
-        font-size: 1.6em;
+        font-size: 2.0em;
     }
 }
