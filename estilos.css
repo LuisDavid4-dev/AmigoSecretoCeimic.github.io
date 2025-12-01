@@ -124,7 +124,7 @@ body {
     padding: 60px 20px 80px 20px; 
     
     /* Fondo de nieve y bokeh - Asegúrate de que 'header2.png' sea la imagen del paisaje invernal */
-    background: url('header4.png') no-repeat center/cover;
+    background: url('header41.png') no-repeat center/cover;
     
     color: var(--blanco-nieve);
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
