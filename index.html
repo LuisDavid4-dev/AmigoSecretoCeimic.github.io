@@ -90,7 +90,7 @@
         const modal = document.getElementById('user-modal');
         const closeBtn = document.querySelector('.close-btn');
 
-        function openModal(name, imgSrc, basicInfo, fullInfo) {
+        function openModal(name, imgSrc, basicInfo, descripcion, obsequios) {
             const modalHeader = document.querySelector('.modal-header');
             const modalBody = document.querySelector('.modal-body');
             
@@ -118,12 +118,29 @@
                             '<p>'+formattedBasicInfo+'</p>'
                         '</div>'+
                     '</div>'+
-                '</div>'+
-                '<div class="modal-divider"></div>';
+                '</div>';
 
-            modalBody.innerHTML = 
-                '<h4>Detalle del Amigo Secreto:</h4>'+
-                '<p>'+fullInfo+'</p>';
+            const formattedObsequios = obsequios
+                    .split('|')
+                    .map(item => {
+                        // Ejemplo: "Reloj masculino(https://falabella.com)"
+                        const match = item.match(/(.+)\((https?:\/\/.+)\)/);
+                        if (match) {
+                            const nombre = match[1].trim();
+                            const url = match[2].trim();
+                            return `<a href="${url}" target="_blank">${nombre}</a>`;
+                        }
+                        return item.trim();
+                    })
+                    .join('<br>');
+
+
+            modalBody.innerHTML =
+                '<div class="modal-divider"></div>'+
+                '<h4>Descripcion:</h4>'+
+                '<p>'+descripcion+'</p>'+
+                '<h4>Lista de posibles regalos:</h4>'+
+                '<p>'+formattedObsequios+'</p>';
 
             modal.style.display = 'flex';
         }
@@ -208,11 +225,18 @@
                 // Lógica final del Ícono: Si es Navidad, usa Papá Noel, sino, usa el ícono fijo.
                 const cardIcon = isChristmasDay ? '🎅' : defaultCardIcon;
                 
+                const formattedHobbies = amigo.hobbies
+                .split('|')
+                .map(hobby => hobby.trim())
+                .join('<br>');
+
+
                 card.onclick = () => openModal(
                     amigo.Nombre_ApellidoPaterno,
                     'amigo.jpg',
-                    `Edad: ${amigo.edad}, Hobbies: ${amigo.hobbies}, Área: ${amigo.Area}`,
-                    amigo.detalleSecreto
+                    `Hobbies: ${formattedHobbies}, Área: ${amigo.Area}`,
+                    amigo.descripcion,
+                    amigo.lista_Regalos
                 );
                 
                 card.innerHTML = 

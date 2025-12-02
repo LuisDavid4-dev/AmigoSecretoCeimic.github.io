@@ -435,9 +435,17 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 15px;
-    border-bottom: 2px solid var(--azul-hielo);
     padding-bottom: 0;
     margin-bottom: 0;
+}
+
+.modal-divider {
+    height: 5px; /* Grosor de la línea */
+    width: 90%; /* Ancho que ocupa dentro del modal */
+    background: linear-gradient(to right, var(--azul-hielo), var(--azul-hielo-vivo), var(--azul-hielo));
+    border-radius: 5px;
+    margin: 15px auto 15px auto; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
 }
 
 .modal-title-h3 {
@@ -459,7 +467,7 @@ body {
     height: 160px;
     object-fit: cover;
     border-radius: 20px; /* Vuelve a ser circular */
-    border: 3px solid var(--rojo-navidad); 
+    border: 2px solid var(--rojo-navidad); 
     margin-bottom: 0; 
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     filter: none;
@@ -856,7 +864,7 @@ body {
         max-width: 1300px; 
         padding: 50px 40px;
     }
-    /*Prueba*/
+    
     /* 3. Ajustes de la Tarjeta para 4 Columnas (Opcional: asegurar que no sean demasiado grandes/pequeñas) */
     .product-card img {
         width: 140px; 

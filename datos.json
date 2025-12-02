@@ -1,33 +1,33 @@
 [
   {
     "id": 1,
-    "edad": 28,
-    "hobbies": "Tecnología",
-    "detalleSecreto": "Le encanta el café y los libros. El regalo debe ser funcional y elegante. Evitar cosas muy personales.",
+    "hobbies": "Tecnología|Futbol",
+    "descripcion": "Le encanta el café y los libros. El regalo debe ser funcional y elegante. Evitar cosas muy personales.",
+    "lista_Regalos": "Reloj masculino(https://www.falabella.com.pe/falabella-pe/product/19948444/Reloj-CURREN-KRE1902-Hombre-+-Estuche/19948444)|Perfume(https://www.falabella.com.pe/falabella-pe/product/144376703/Solo-Elixir-Perfume-80-ml/144376704)|Libro(https://www.falabella.com.pe/falabella-pe/product/147989613/Libro-La-ciudad-y-los-perros-Vargas-Llosa-Mario-DEBOLSILLO/147989614)",
     "Nombre_ApellidoPaterno": "Amigo 1",
     "Area": "Sistemas"
   },
   {
     "id": 2,
-    "edad": 35,
     "hobbies": "Jardinería",
-    "detalleSecreto": "Necesita algo para su escritorio. Algo que aporte paz y naturaleza a su espacio de trabajo.",
+    "descripcion": "Necesita algo para su escritorio. Algo que aporte paz y naturaleza a su espacio de trabajo.",
+    "lista_Regalos": "Reloj masculino(https://www.falabella.com.pe/falabella-pe/product/19948444/Reloj-CURREN-KRE1902-Hombre-+-Estuche/19948444)|Perfume(https://www.falabella.com.pe/falabella-pe/product/144376703/Solo-Elixir-Perfume-80-ml/144376704)|Libro(https://www.falabella.com.pe/falabella-pe/product/147989613/Libro-La-ciudad-y-los-perros-Vargas-Llosa-Mario-DEBOLSILLO/147989614)",
     "Nombre_ApellidoPaterno": "Amigo 2",
     "Area": "Administración"
   },
   {
     "id": 3,
-    "edad": 22,
     "hobbies": "Viajar",
-    "detalleSecreto": "Algo azul o relacionado con el mar. Un accesorio de viaje pequeño y útil será bien recibido.",
+    "descripcion": "Algo azul o relacionado con el mar. Un accesorio de viaje pequeño y útil será bien recibido.",
+    "lista_Regalos": "Reloj masculino(https://www.falabella.com.pe/falabella-pe/product/19948444/Reloj-CURREN-KRE1902-Hombre-+-Estuche/19948444)|Perfume(https://www.falabella.com.pe/falabella-pe/product/144376703/Solo-Elixir-Perfume-80-ml/144376704)|Libro(https://www.falabella.com.pe/falabella-pe/product/147989613/Libro-La-ciudad-y-los-perros-Vargas-Llosa-Mario-DEBOLSILLO/147989614)",
     "Nombre_ApellidoPaterno": "Amigo 3",
     "Area": "Marketing"
   },
   {
     "id": 4,
-    "edad": 30,
     "hobbies": "Cocina",
-    "detalleSecreto": "Un dulce regalo comestible. Prefiere lo artesanal o gourmet.",
+    "descripcion": "Un dulce regalo comestible. Prefiere lo artesanal o gourmet.",
+    "lista_Regalos": "Reloj masculino(https://www.falabella.com.pe/falabella-pe/product/19948444/Reloj-CURREN-KRE1902-Hombre-+-Estuche/19948444)|Perfume(https://www.falabella.com.pe/falabella-pe/product/144376703/Solo-Elixir-Perfume-80-ml/144376704)|Libro(https://www.falabella.com.pe/falabella-pe/product/147989613/Libro-La-ciudad-y-los-perros-Vargas-Llosa-Mario-DEBOLSILLO/147989614)",
     "Nombre_ApellidoPaterno": "Amigo 4",
     "Area": "Recursos Humanos"
   }
