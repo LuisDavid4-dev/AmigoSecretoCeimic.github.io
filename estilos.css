@@ -124,7 +124,7 @@ body {
     padding: 60px 20px 80px 20px; 
     
     /* Fondo de nieve y bokeh - Asegúrate de que 'header2.png' sea la imagen del paisaje invernal */
-    background: url('header41.png') no-repeat center/cover;
+    background: url('header4.png') no-repeat center/cover;
     
     color: var(--blanco-nieve);
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
@@ -434,17 +434,16 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 15px;
+    gap: 10px;
     padding-bottom: 0;
     margin-bottom: 0;
 }
 
 .modal-divider {
-    height: 5px; /* Grosor de la línea */
+    height: 2px; /* Grosor de la línea */
     width: 90%; /* Ancho que ocupa dentro del modal */
     background: linear-gradient(to right, var(--azul-hielo), var(--azul-hielo-vivo), var(--azul-hielo));
     border-radius: 5px;
-    margin: 15px auto 15px auto; 
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
 }
 
@@ -485,7 +484,7 @@ body {
 .modal-info-top {
     flex-grow: 1;
     text-align: left;
-    padding-top: 5px;
+    padding-top: 2px;
 }
 
 .modal-info-top h3 {
@@ -508,7 +507,7 @@ body {
 
 .modal-body h4 {
     color: var(--rojo-navidad);
-    font-size: 1.4em;
+    font-size: 1.2em;
     margin-bottom: 10px;
 }
 .modal-body p {

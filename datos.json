@@ -1,34 +1,83 @@
 [
   {
     "id": 1,
-    "hobbies": "Tecnología|Futbol",
-    "descripcion": "Le encanta el café y los libros. El regalo debe ser funcional y elegante. Evitar cosas muy personales.",
-    "lista_Regalos": "Reloj masculino(https://www.falabella.com.pe/falabella-pe/product/19948444/Reloj-CURREN-KRE1902-Hombre-+-Estuche/19948444)|Perfume(https://www.falabella.com.pe/falabella-pe/product/144376703/Solo-Elixir-Perfume-80-ml/144376704)|Libro(https://www.falabella.com.pe/falabella-pe/product/147989613/Libro-La-ciudad-y-los-perros-Vargas-Llosa-Mario-DEBOLSILLO/147989614)",
-    "Nombre_ApellidoPaterno": "Amigo 1",
-    "Area": "Sistemas"
+    "hobbies": "Ir a terapia|Escuchar música",
+    "descripcion": "Soy lo máximo.... mi mayor virtud es la modestia y mi juventud desbordante.",
+    "lista_Regalos": "Morral Portable para Mascotas(https://www.promart.pe/morral-portable-para-mascotas-rosado-1000278758/p)|Quilt Microfibra Color(https://www.casaideas.com.pe/casa---dormitorio-quilt-microfibra-liso--rosa-palido--0015/p?skuId=20646)|Bolso Mujer Benetton(https://www.falabella.com.pe/falabella-pe/product/883527945/Bolso-Mujer-Benetton/883527947)",
+    "Nombre_ApellidoPaterno": "Cristina Salinas Mayorga",
+    "Area": "Administración",
+    "Foto": "Cristina Salinas.jpg"
   },
   {
     "id": 2,
-    "hobbies": "Jardinería",
-    "descripcion": "Necesita algo para su escritorio. Algo que aporte paz y naturaleza a su espacio de trabajo.",
-    "lista_Regalos": "Reloj masculino(https://www.falabella.com.pe/falabella-pe/product/19948444/Reloj-CURREN-KRE1902-Hombre-+-Estuche/19948444)|Perfume(https://www.falabella.com.pe/falabella-pe/product/144376703/Solo-Elixir-Perfume-80-ml/144376704)|Libro(https://www.falabella.com.pe/falabella-pe/product/147989613/Libro-La-ciudad-y-los-perros-Vargas-Llosa-Mario-DEBOLSILLO/147989614)",
-    "Nombre_ApellidoPaterno": "Amigo 2",
-    "Area": "Administración"
+    "hobbies": "Hacer manualidades|Escuchar música|Bailar",
+    "descripcion": "Soy alegre, responsable, veraz (a veces demasiado) y me encanta viajar.",
+    "lista_Regalos": "Mochila de viaje(https://www.sodimac.com.pe/sodimac-pe/articulo/144998980/Mochila-de-Viaje-Viral-TikTok-negra/144998981)|Freidora de Aire 5L(https://www.sodimac.com.pe/sodimac-pe/articulo/143252134/Freidora-Aire-Airfryer-Digital-5L-Moderna-Sin-Aceite-2400W-Negro/143252135)|Cartera para Mujer(https://keller.com.pe/products/cartera-para-mujer-3-piezas-elegante-08g?pr_prod_strat=e5_desc&pr_rec_id=fd68c547b&pr_rec_pid=9969185194273&pr_ref_pid=9949934813473&pr_seq=uniform)",
+    "Nombre_ApellidoPaterno": "Karim López",
+    "Area": "Laboratorio Food",
+    "Foto": "Karim Lopez.jpeg"
   },
   {
     "id": 3,
-    "hobbies": "Viajar",
-    "descripcion": "Algo azul o relacionado con el mar. Un accesorio de viaje pequeño y útil será bien recibido.",
-    "lista_Regalos": "Reloj masculino(https://www.falabella.com.pe/falabella-pe/product/19948444/Reloj-CURREN-KRE1902-Hombre-+-Estuche/19948444)|Perfume(https://www.falabella.com.pe/falabella-pe/product/144376703/Solo-Elixir-Perfume-80-ml/144376704)|Libro(https://www.falabella.com.pe/falabella-pe/product/147989613/Libro-La-ciudad-y-los-perros-Vargas-Llosa-Mario-DEBOLSILLO/147989614)",
-    "Nombre_ApellidoPaterno": "Amigo 3",
-    "Area": "Marketing"
+    "hobbies": "Jugar fútbol|Jugar play|Ver animes",
+    "descripcion": "Me llamo Merwing Quiva, me gusta jugar play y jugar fútbol, tengo 25 años y me gusta pasa tiempo con mi familia y amigos.",
+    "lista_Regalos": "Audífonos gamer o cualquiera que pueda ser conectado al play|Kit de minoxidil con gotero|Gift Card de hym o Playstation store.",
+    "Nombre_ApellidoPaterno": "Merwing Quiva",
+    "Area": "Operaciones - Ambiental",
+    "Foto": "Merwing Quiva.jpg"
   },
   {
     "id": 4,
-    "hobbies": "Cocina",
-    "descripcion": "Un dulce regalo comestible. Prefiere lo artesanal o gourmet.",
-    "lista_Regalos": "Reloj masculino(https://www.falabella.com.pe/falabella-pe/product/19948444/Reloj-CURREN-KRE1902-Hombre-+-Estuche/19948444)|Perfume(https://www.falabella.com.pe/falabella-pe/product/144376703/Solo-Elixir-Perfume-80-ml/144376704)|Libro(https://www.falabella.com.pe/falabella-pe/product/147989613/Libro-La-ciudad-y-los-perros-Vargas-Llosa-Mario-DEBOLSILLO/147989614)",
-    "Nombre_ApellidoPaterno": "Amigo 4",
-    "Area": "Recursos Humanos"
+    "hobbies": "Ver streaming|Ver plataformas",
+    "descripcion": "Soy yo ya me conocen",
+    "lista_Regalos": "Zapatillas para Hombre(https://simple.ripley.com.pe/zapatillas-hombre-revup-running-azul-toro-2084354960096?color_80=azul&s=mdco&talla_calzado_faceta=43)|Audifonos Wireless Redmi(https://simple.ripley.com.pe/audifonos-xiaomi-true-wireless-redmi-buds-6-active-bluetooth-2018364550015p?color_80=negro&s=mdco)|Polo Tricampeon Universitario(https://www.falabella.com.pe/falabella-pe/product/21307547/Polo-Tricampeon-Universitario-Marathon/21307548)",
+    "Nombre_ApellidoPaterno": "Arturo Garces",
+    "Area": "Operaciones - Ambiental",
+    "Foto": "default.jpg"
+  },
+  {
+    "id": 5,
+    "hobbies": "Viajar|Nadar",
+    "descripcion": "Soy alegre, empatica, habladora y diria yo que graciosa, solo un poco renegona :)",
+    "lista_Regalos": "Maleta De Viaje 26 Pulgadas 15 Kg con Clave - Nude, negro o plateado(https://cadi.pe/prod/maleta-de-viaje-26-pulgadas-15-kg-con-clave-nude/)|Bolso + toalla color beige(https://www.falabella.com.pe/falabella-pe/product/prod17880033/Bolso-+-Toalla-De-Playa-100-Algodon-Benetton/883495025?kid=shopp69fc&gclsrc=aw.ds&gad_source=1&gad_campaignid=21209754652&gbraid=0AAAAADs9MO2lh4KnNOmH0zb202MP_0n-f&gclid=CjwKCAiA86_JBhAIEiwA4i9Ju1-4t0SHBkd5oqfy6DTh9NndzzKLm9VJ3kWinVVQ9LF-mzxCgpVpSxoC4oIQAvD_BwE)|Mochila Beige(https://www.falabella.com.pe/falabella-pe/product/883601852/Mochila-Mujer-Benetton/883601854)",
+    "Nombre_ApellidoPaterno": "Stephanie Del Aguila",
+    "Area": "Comercial Agricola",
+    "Foto": "Stephanie Del Aguila.jpg"
+  },
+  {
+    "id": 6,
+    "hobbies": "Tech|Fútbol|Picnic",
+    "descripcion": "Alegre, expontaneo, deportista (aunque el fisico ya no ayuda mucho) y mucho la aventura o actividades al aire libre.",
+    "lista_Regalos": "PowerBand [cargador portatil](https://www.falabella.com.pe/falabella-pe/product/145896731/Xiaomi-Redmi-Power-Bank-20000-mAh-18W-Carga-Rapida/145896732)|Billetera multifuncional color oscuro(https://www.falabella.com.pe/falabella-pe/product/148082803/Billetera-para-hombre-de-cuerto-trifold-sencillero-int-Marron/14808280)|Lentes polarizados color negro(https://www.falabella.com.pe/falabella-pe/product/136974715/Lentes-de-Sol-Polarizado-Deportivo-uv400-+estuche/136974716)",
+    "Nombre_ApellidoPaterno": "Eder Anthur Ortega Fernandez",
+    "Area": "TI",
+    "Foto": "Eder Ortega.jpeg"
+  },
+  {
+    "id": 7,
+    "hobbies": "Jugar Videojuegos|Escuchar Música",
+    "descripcion": "Me gusta el rock. Suelo tocar la guitarra en mis tiempos libres. Disfruto de los videojuegos de todo tipo.",
+    "lista_Regalos": "Mochila oscura mediana(https://www.falabella.com.pe/falabella-pe/product/20226167/Mochila-Kuzler-Walds-101-/20226167)|Audifonos Wireless blancos(https://www.falabella.com.pe/falabella-pe/product/130325540/Audifonos-Bluetooth-QCY-T13-ANC2-Con-Cancelacion-de-Ruido-28dB-Blanco/130325542?rid=Recs%21XLP%21PE_F.com%21Rec_1%21x%21Recently_products_XLP_f.com%21home%21130325542%219%2114)|Casaca verde de algodon(https://www.falabella.com.pe/falabella-pe/product/883439813/Casaca-100-Algodon-Hombre-Basement/883439814)",
+    "Nombre_ApellidoPaterno": "Luis Ichpas",
+    "Area": "TI",
+    "Foto": "Luis Ichpas.jpg"
+  },
+  {
+    "id": 8,
+    "hobbies": "Salir a correr|Tocar y escuchar música|Cantar // Escribir",
+    "descripcion": "Ingeniera Forestal y Medio Ambiente de profesión, con experiencia diversa.. Amo el anime, los libros de misterio y detectives, los doramas y el k-pop. Me considero una persona organizada. Escribo muchísimo —tengo dos libros casi terminados— y la música es parte de mi día a día; últimamente estoy siempre acompañada de mi guitarra o mi ukelele. Me encanta descubrir restaurantes con estética que encaje conmigo. Y llevo con orgullo mis raíces afroperuanas y costeñas: soy de Tumbes.",
+    "lista_Regalos": "Disco de Vinilo de ABBA[Este enlace para que esté dentro del monto](https://www.facebook.com/share/17pgEfwuZf/)|Maleta color oro rosa(https://www.falabella.com.pe/falabella-pe/product/119489218/Maleta-de-Cabina-con-Clave-Carry-on-10kg-Oro-Rosa-/119489219)|Labial nude, cartera negra, mascara de pestañas(https://www.falabella.com.pe/falabella-pe/product/prod18521681/Set-Dupla-Maybelline/sku18810050)",
+    "Nombre_ApellidoPaterno": "Alessandra del Pilar Armestar Ortiz",
+    "Area": "Calidad",
+    "Foto": "Alessandra Armestar.jpg"
+  },
+  {
+    "id": 9,
+    "hobbies": "Caminar // Nadar // Pintar|Escuchar música // Mirar peliculas|Viajar // Tejer a Crochet",
+    "descripcion": "Uhmm me describo amigable, tolerante, curiosa.",
+    "lista_Regalos": "Cartera Dos Asas Pequeña Allena Negro(https://share.google/QEmyTnWPW5RZ1AHPO)|Cartera Dos Asas Finlandia Negro(https://amphora.pe/products/cartera-dos-asas-finlandia-negro?variant=46731169890523)|Xiaomi Airdots Auriculares(https://www.falabella.com.pe/falabella-pe/product/127806942/Xiaomi-Airdots-2-De-Tws-Auriculares-y-Toumi-Watch-B-Reloj-inteligente/127806943)",
+    "Nombre_ApellidoPaterno": "Yuliana Aliceé Felipa Tito",
+    "Area": "Operaciones - Ambiental",
+    "Foto": "Yuliana Felipa.jpg"
   }
 ]

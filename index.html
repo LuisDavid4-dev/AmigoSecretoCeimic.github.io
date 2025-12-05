@@ -90,7 +90,7 @@
         const modal = document.getElementById('user-modal');
         const closeBtn = document.querySelector('.close-btn');
 
-        function openModal(name, imgSrc, basicInfo, descripcion, obsequios) {
+        function openModal(id, name, imgSrc, basicInfo, descripcion, obsequios) {
             const modalHeader = document.querySelector('.modal-header');
             const modalBody = document.querySelector('.modal-body');
             
@@ -113,12 +113,21 @@
                 '</div>'+
                 '<div class="modal-header-content-wrapper">'+
                     '<div class="modal-visual-info">'+
-                        '<img src="'+imgSrc+'" alt="Foto de '+name+'" class="modal-img">'+
+                        '<img src="fotos/'+imgSrc+'" alt="Foto de '+name+'" class="modal-img">'+
                         '<div class="modal-info-top">'+
                             '<p>'+formattedBasicInfo+'</p>'
                         '</div>'+
                     '</div>'+
                 '</div>';
+
+            const titleElement = modalHeader.querySelector('.modal-title-h3');
+
+            // Comprobamos la condición: Si el ID es igual a 1
+            if (id === 6 || id === 8) {
+                // Reducir el tamaño de la fuente para ese usuario específico
+                titleElement.style.fontSize = '1.4em'; // Ejemplo: un tamaño más pequeño
+                titleElement.style.color = 'var(--azul-profundo)'; // Opcional: cambiar el color
+            }
 
             const formattedObsequios = obsequios
                     .split('|')
@@ -138,9 +147,16 @@
             modalBody.innerHTML =
                 '<div class="modal-divider"></div>'+
                 '<h4>Descripcion:</h4>'+
-                '<p>'+descripcion+'</p>'+
+                '<p class="descripcion-class">'+descripcion+'</p>'+
                 '<h4>Lista de posibles regalos:</h4>'+
                 '<p>'+formattedObsequios+'</p>';
+
+            const descripcionElement = modalBody.querySelector('.descripcion-class');
+
+            if (id === 8) {
+                // Reducir el tamaño de la fuente para ese usuario específico
+                descripcionElement.style.fontSize = '0.8em'; // Ejemplo: un tamaño más pequeño
+            }
 
             modal.style.display = 'flex';
         }
@@ -232,8 +248,9 @@
 
 
                 card.onclick = () => openModal(
+                    amigo.id,
                     amigo.Nombre_ApellidoPaterno,
-                    'amigo.jpg',
+                    amigo.Foto,
                     `Hobbies: ${formattedHobbies}, Área: ${amigo.Area}`,
                     amigo.descripcion,
                     amigo.lista_Regalos
@@ -243,7 +260,7 @@
                     '<span class="card-icon-emoji">'+cardIcon+'</span>'+
                     '<br>'+
                     '<div class="card-content">'+
-                        '<img src="amigo.jpg" alt="Foto de '+amigo.Nombre_ApellidoPaterno+'">'+
+                        '<img src="fotos/'+amigo.Foto+'" alt="Foto de '+amigo.Nombre_ApellidoPaterno+'">'+
                         '<h3>'+amigo.Nombre_ApellidoPaterno+'</h3>'+
                     '</div>'+
                     '<p>'+amigo.Area.split('.')[0]+'</p>';
@@ -321,10 +338,15 @@
             fetch('datos.json')
                 .then(response => response.json())
                 .then(data => {
+                    data.sort((a, b) => {
+                        // Usar localeCompare es mejor para la ordenación de strings que incluye tildes y otros caracteres especiales.
+                        return a.Area.localeCompare(b.Area);
+                    });
+                    
                     allUserData = data; 
-                
-                // Renderiza la lista completa al inicio
-                renderCards(allUserData);
+                
+                    // Renderiza la lista completa al inicio
+                    renderCards(allUserData);
                     // ✅ AJUSTE FINAL: Se llama después de que las tarjetas están en el DOM.
                 })
                 .catch(error => {
