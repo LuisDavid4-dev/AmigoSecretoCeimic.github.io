@@ -114,7 +114,7 @@ body {
     text-shadow: 2px 2px 5px rgba(0,0,0,0.7); 
     line-height: 1; 
 }*/
-/*Cambio en el header*/
+
 
 
 .navidad-header {
@@ -124,7 +124,7 @@ body {
     padding: 60px 20px 80px 20px; 
     
     /* Fondo de nieve y bokeh - Asegúrate de que 'header2.png' sea la imagen del paisaje invernal */
-    background: url('header41.png') no-repeat center/cover;
+    background: url('header4.png') no-repeat center/cover;
     
     color: var(--blanco-nieve);
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
@@ -411,6 +411,67 @@ body {
     border: 5px solid var(--rojo-navidad); 
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }*/
+
+
+.modal-tab-header {
+    display: flex;
+    border-bottom: 2px solid var(--azul-hielo-vivo); /* Línea base */
+    margin-bottom: 10px;
+}
+
+.modal-tab {
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 0.9em;
+    font-weight: bold;
+    color: var(--azul-hielo-vivo); /* Texto inactivo */
+    background-color: transparent;
+    transition: all 0.3s ease;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    /* Imita el borde de la pestaña activa */
+    border: 1px solid transparent; 
+    border-bottom: none;
+    user-select: none; /* Evita selección de texto */
+}
+
+/* Estilo para la pestaña activa */
+.modal-tab.active-tab {
+    color: white; /* Texto blanco en pestaña activa */
+    background-color: var(--azul-hielo-vivo); /* Fondo azul vivo */
+    border-color: var(--azul-hielo-vivo);
+    /* Desplaza ligeramente hacia arriba y anula el borde inferior */
+    transform: translateY(2px); 
+    border-bottom: 2px solid var(--azul-hielo-vivo); 
+    z-index: 10; 
+}
+
+.modal-tab:hover:not(.active-tab) {
+    background-color: rgba(0, 0, 0, 0.05); /* Leve hover para inactiva */
+}
+
+
+/* Estilos de la lista de regalos */
+#tab-regalos ul {
+    list-style: disc inside;
+    padding-left: 20px;
+}
+
+#tab-regalos li {
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+#tab-regalos a {
+    color: var(--rojo-navidad); 
+    text-decoration: underline;
+}
+
+/* Ajuste para el texto de la descripción */
+.descripcion-class {
+    line-height: 1.5;
+    text-align: justify;
+}
 
 .close-btn {
     color: var(--azul-profundo);

@@ -46,22 +46,16 @@
     </div>
 
     <script>
-        // --- 1. FUNCIONES DE UTILERÍA (DEFINIDAS PRIMERO) ---
+        // --- 1. FUNCIONES DE UTILERÍA (DEFINIDAS PRIMERO) ---
 
-        function adjustSnowflakeHeight() {
-            const snowflakes = document.querySelector('.snowflakes');
-            // 1. Altura total del contenido (incluye el scroll).
-            const totalContentHeight = document.body.scrollHeight;
-            
-            // 2. Altura visible de la ventana.
-            const minHeight = window.innerHeight;
-            
-            // 🔑 CORRECCIÓN: Usamos el máximo entre la altura del contenido y la altura visible de la ventana.
-            const requiredHeight = Math.max(totalContentHeight, minHeight);
-
-            snowflakes.style.height = `${requiredHeight}px`;
-        }
-        
+        function adjustSnowflakeHeight() {
+            const snowflakes = document.querySelector('.snowflakes');
+            const totalContentHeight = document.body.scrollHeight;
+            const minHeight = window.innerHeight;
+            const requiredHeight = Math.max(totalContentHeight, minHeight);
+            snowflakes.style.height = `${requiredHeight}px`;
+        }
+        
         function createSnowflake() {
             const snowflake = document.createElement('div');
             snowflake.className = 'snowflake';
@@ -85,16 +79,37 @@
             }
         }
 
-        // --- 2. CÓDIGO DEL MODAL (Mantenido) ---
+        // --- 2. CÓDIGO DEL MODAL (Mantenido y Modificado para Pestañas) ---
 
         const modal = document.getElementById('user-modal');
         const closeBtn = document.querySelector('.close-btn');
 
+        // Función para manejar el cambio de pestañas
+        function switchModalTab(tabId) {
+            // 1. Desactivar todas las pestañas y ocultar todos los contenidos
+            document.querySelectorAll('.modal-tab').forEach(tab => {
+                tab.classList.remove('active-tab');
+            });
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.style.display = 'none';
+            });
+
+            // 2. Activar la pestaña y mostrar el contenido seleccionado
+            const selectedTab = document.querySelector(`.modal-tab[data-tab="${tabId}"]`);
+            const selectedContent = document.getElementById(tabId);
+            
+            if (selectedTab && selectedContent) {
+                selectedTab.classList.add('active-tab');
+                selectedContent.style.display = 'block';
+            }
+        }
+
+
         function openModal(id, name, imgSrc, basicInfo, descripcion, obsequios) {
             const modalHeader = document.querySelector('.modal-header');
             const modalBody = document.querySelector('.modal-body');
-            
-            document.body.classList.add('modal-open');
+            
+            document.body.classList.add('modal-open');
 
             const formattedBasicInfo = basicInfo
                 .split(', ') 
@@ -120,259 +135,261 @@
                     '</div>'+
                 '</div>';
 
-            const titleElement = modalHeader.querySelector('.modal-title-h3');
+            const titleElement = modalHeader.querySelector('.modal-title-h3');
 
-            // Comprobamos la condición: Si el ID es igual a 1
-            if (id === 6 || id === 8) {
-                // Reducir el tamaño de la fuente para ese usuario específico
-                titleElement.style.fontSize = '1.4em'; // Ejemplo: un tamaño más pequeño
-                titleElement.style.color = 'var(--azul-profundo)'; // Opcional: cambiar el color
-            }
+            // Comprobamos la condición: Si el ID es igual a 6 o 8
+            if (id === 6 || id === 8) {
+                titleElement.style.fontSize = '1.4em'; 
+                titleElement.style.color = 'var(--azul-profundo)'; 
+            }
 
-            const formattedObsequios = obsequios
-                    .split('|')
-                    .map(item => {
-                        // Ejemplo: "Reloj masculino(https://falabella.com)"
-                        const match = item.match(/(.+)\((https?:\/\/.+)\)/);
-                        if (match) {
-                            const nombre = match[1].trim();
-                            const url = match[2].trim();
-                            return `<a href="${url}" target="_blank">${nombre}</a>`;
-                        }
-                        return item.trim();
-                    })
-                    .join('<br>');
+            const formattedObsequios = obsequios
+                    .split('|')
+                    .map(item => {
+                        const match = item.match(/(.+)\((https?:\/\/.+)\)/);
+                        if (match) {
+                            const nombre = match[1].trim();
+                            const url = match[2].trim();
+                            return `<li><a href="${url}" target="_blank">${nombre}</a></li>`; // Usamos <li> para lista
+                        }
+                        return `<li>${item.trim()}</li>`; // Usamos <li> para lista
+                    })
+                    .join('');
 
 
+            // 🔑 MODIFICACIÓN CLAVE: Se añaden las pestañas
             modalBody.innerHTML =
-                '<div class="modal-divider"></div>'+
-                '<h4>Descripcion:</h4>'+
-                '<p class="descripcion-class">'+descripcion+'</p>'+
-                '<h4>Lista de posibles regalos:</h4>'+
-                '<p>'+formattedObsequios+'</p>';
+                '<div class="tab-container">'+
+                    '<div class="modal-tab-header">'+
+                        '<div class="modal-tab active-tab" data-tab="tab-descripcion">DESCRIPCIÓN</div>'+
+                        '<div class="modal-tab" data-tab="tab-regalos">LISTA DE REGALOS</div>'+
+                    '</div>'+
+                    '<div class="modal-tab-content-wrapper">'+
+                        // Contenido de la Descripción (inicialmente visible)
+                        '<div id="tab-descripcion" class="tab-content" style="display: block;">'+
+                            '<p class="descripcion-class">'+descripcion+'</p>'+
+                        '</div>'+
+                        // Contenido de la Lista de Regalos (inicialmente oculto)
+                        '<div id="tab-regalos" class="tab-content" style="display: none;">'+
+                            '<ul>'+formattedObsequios+'</ul>'+
+                        '</div>'+
+                    '</div>'+
+                '</div>';
 
-            const descripcionElement = modalBody.querySelector('.descripcion-class');
 
-            if (id === 8) {
-                // Reducir el tamaño de la fuente para ese usuario específico
-                descripcionElement.style.fontSize = '0.8em'; // Ejemplo: un tamaño más pequeño
-            }
+            // Lógica para el usuario ID=8
+            if (id === 8) {
+                const descripcionElement = modalBody.querySelector('.descripcion-class');
+                if (descripcionElement) {
+                    descripcionElement.style.fontSize = '0.8em'; 
+                }
+            }
 
+            // 🔑 AÑADIR LISTENERS DE PESTAÑAS
+            modal.querySelectorAll('.modal-tab').forEach(tab => {
+                tab.onclick = function() {
+                    switchModalTab(this.getAttribute('data-tab'));
+                };
+            });
+            
             modal.style.display = 'flex';
         }
 
+        // Estas funciones se mantienen por compatibilidad, pero los listeners se redefinen en DOMContentLoaded
         closeBtn.onclick = function () {
             modal.style.display = 'none';
+            document.body.classList.remove('modal-open');
         }
 
         window.onclick = function (event) {
             if (event.target === modal) {
                 modal.style.display = 'none';
+                document.body.classList.remove('modal-open');
             }
         }
-        
-        let allUserData = []; // Almacena los datos originales de datos.json
-        let isChristmasDay = false;
-        // --- 3. BLOQUE PRINCIPAL DE CARGA (document.addEventListener('DOMContentLoaded')) ---
-        // Este bloque ahora contiene toda la lógica de inicio.
+        
+        let allUserData = []; 
+        let isChristmasDay = false;
+        // --- 3. BLOQUE PRINCIPAL DE CARGA (document.addEventListener('DOMContentLoaded')) ---
 
-        const searchInput = document.getElementById('user-search-input');
-        const clearButton = document.getElementById('clear-search-btn');
-        const grid = document.querySelector('.product-grid');
+        const searchInput = document.getElementById('user-search-input');
+        const clearButton = document.getElementById('clear-search-btn');
+        const grid = document.querySelector('.product-grid');
 
-        const FIXED_ICON_MAP = ["🌟", "🦌", "🎁", "🔔", "❄️", "🧤", "⛄", "☕", "🎄", "🍬"];
+        const FIXED_ICON_MAP = ["🌟", "🦌", "🎁", "🔔", "❄️", "🧤", "⛄", "☕", "🎄", "🍬"];
 
-        function activateChristmasDayMode() {
-            const today = new Date();
-            // Diciembre es 11, día 25.
-            const isChristmasDay = today.getMonth() === 11 && today.getDate() === 19;
-            // Para pruebas puedes cambiar a: const isChristmasDay = true; 
+        function activateChristmasDayMode() {
+            const today = new Date();
+            // Diciembre es 11, día 25.
+            const isChristmasDay = today.getMonth() === 11 && today.getDate() === 19;
+            // Para pruebas puedes cambiar a: const isChristmasDay = true; 
 
-            if (isChristmasDay) {
-                // 1. CAMBIAR EL TÍTULO
-                const mainTitle = document.querySelector('.titulo-rojo-navidad');
-                if (mainTitle) {
-                    mainTitle.innerHTML = '¡Es Hoy! 🎅🎁';
-                    mainTitle.style.fontSize = '5em'; 
-                    mainTitle.style.color = 'var(--verde-navidad)'; 
-                }
-                
-                // 2. REEMPLAZAR DECORACIONES DEL HEADER
-                const arbolDecor = document.querySelectorAll('.arbol-decor');
-                arbolDecor.forEach(decor => {
-                    decor.innerHTML = '🦌'; // Renos
-                    decor.style.color = 'var(--rojo-navidad)'; 
-                });
+            if (isChristmasDay) {
+                // 1. CAMBIAR EL TÍTULO
+                const mainTitle = document.querySelector('.titulo-rojo-navidad');
+                if (mainTitle) {
+                    mainTitle.innerHTML = '¡Es Hoy! 🎅🎁';
+                    mainTitle.style.fontSize = '5em'; 
+                    mainTitle.style.color = 'var(--verde-navidad)'; 
+                }
+                
+                // 2. REEMPLAZAR DECORACIONES DEL HEADER
+                const arbolDecor = document.querySelectorAll('.arbol-decor');
+                arbolDecor.forEach(decor => {
+                    decor.innerHTML = '🦌'; 
+                    decor.style.color = 'var(--rojo-navidad)'; 
+                });
 
-                const estrellaDecor = document.querySelectorAll('.estrella-decor');
-                estrellaDecor.forEach(decor => {
-                    decor.innerHTML = '🎁'; // Regalos
-                    decor.style.fontSize = '3em';
-                });
+                const estrellaDecor = document.querySelectorAll('.estrella-decor');
+                estrellaDecor.forEach(decor => {
+                    decor.innerHTML = '🎁'; 
+                    decor.style.fontSize = '3em';
+                });
 
-                // 3. ACTIVAR EFECTO VISUAL
-                document.body.style.backgroundImage = 'radial-gradient(circle, rgba(255,255,255,0.3) 1px, transparent 1px)';
-                document.body.style.backgroundSize = '50px 50px';
-                document.body.style.animation = 'none'; 
-                
-                // Opcional: Cambiar el color del borde de las tarjetas
-                document.documentElement.style.setProperty('--azul-hielo-vivo', 'var(--rojo-navidad)');
-            }
-        }
+                // 3. ACTIVAR EFECTO VISUAL
+                document.body.style.backgroundImage = 'radial-gradient(circle, rgba(255,255,255,0.3) 1px, transparent 1px)';
+                document.body.style.backgroundSize = '50px 50px';
+                document.body.style.animation = 'none'; 
+                
+                // Opcional: Cambiar el color del borde de las tarjetas
+                document.documentElement.style.setProperty('--azul-hielo-vivo', 'var(--rojo-navidad)');
+            }
+        }
 
-        function renderCards(data) {
-            grid.innerHTML = ''; 
+        function renderCards(data) {
+            grid.innerHTML = ''; 
 
-            if (data.length === 0) {
-                grid.innerHTML = '<p class="no-results-message">🥺 ¡Oh no! No se encontraron usuarios que coincidan con la búsqueda.</p>';
-                return;
-            }
+            if (data.length === 0) {
+                grid.innerHTML = '<p class="no-results-message">🥺 ¡Oh no! No se encontraron usuarios que coincidan con la búsqueda.</p>';
+                return;
+            }
 
-            data.forEach((amigo, index) => {
-                const card = document.createElement('div');
-                card.className = 'product-card';
-                
-                // 🔑 Lógica de Ícono Fijo basado en el índice (para que no cambie al filtrar)
-                // Se usa el ID o el índice para calcular un valor entre 0 y 9.
-                // Si el JSON tiene un ID, sería mejor usarlo. Aquí usamos el índice:
-                const fixedIconIndex = amigo.id % FIXED_ICON_MAP.length; 
-                const defaultCardIcon = FIXED_ICON_MAP[fixedIconIndex];
-                
-                // Lógica final del Ícono: Si es Navidad, usa Papá Noel, sino, usa el ícono fijo.
-                const cardIcon = isChristmasDay ? '🎅' : defaultCardIcon;
-                
-                const formattedHobbies = amigo.hobbies
-                .split('|')
-                .map(hobby => hobby.trim())
-                .join('<br>');
+            data.forEach((amigo, index) => {
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                
+                const fixedIconIndex = amigo.id % FIXED_ICON_MAP.length; 
+                const defaultCardIcon = FIXED_ICON_MAP[fixedIconIndex];
+                
+                const cardIcon = isChristmasDay ? '🎅' : defaultCardIcon;
+                
+                const formattedHobbies = amigo.hobbies
+                .split('|')
+                .map(hobby => hobby.trim())
+                .join('<br>');
 
 
-                card.onclick = () => openModal(
-                    amigo.id,
-                    amigo.Nombre_ApellidoPaterno,
-                    amigo.Foto,
-                    `Hobbies: ${formattedHobbies}, Área: ${amigo.Area}`,
-                    amigo.descripcion,
-                    amigo.lista_Regalos
-                );
-                
-                card.innerHTML = 
-                    '<span class="card-icon-emoji">'+cardIcon+'</span>'+
-                    '<br>'+
-                    '<div class="card-content">'+
-                        '<img src="fotos/'+amigo.Foto+'" alt="Foto de '+amigo.Nombre_ApellidoPaterno+'">'+
-                        '<h3>'+amigo.Nombre_ApellidoPaterno+'</h3>'+
-                    '</div>'+
-                    '<p>'+amigo.Area.split('.')[0]+'</p>';
-                    
-                grid.appendChild(card);
-            });
-            
-            // Ajusta la altura de la nieve después de renderizar el contenido
-            setTimeout(adjustSnowflakeHeight, 50);
-        }
+                card.onclick = () => openModal(
+                    amigo.id,
+                    amigo.Nombre_ApellidoPaterno,
+                    amigo.Foto,
+                    `Hobbies: ${formattedHobbies}, Área: ${amigo.Area}`,
+                    amigo.descripcion,
+                    amigo.lista_Regalos
+                );
+                
+                card.innerHTML = 
+                    '<span class="card-icon-emoji">'+cardIcon+'</span>'+
+                    '<br>'+
+                    '<div class="card-content">'+
+                        '<img src="fotos/'+amigo.Foto+'" alt="Foto de '+amigo.Nombre_ApellidoPaterno+'">'+
+                        '<h3>'+amigo.Nombre_ApellidoPaterno+'</h3>'+
+                    '</div>'+
+                    '<p>'+amigo.Area.split('.')[0]+'</p>';
+                    
+                grid.appendChild(card);
+            });
+            
+            setTimeout(adjustSnowflakeHeight, 50);
+        }
 
 
-        // --- FUNCIÓN: FILTRA EL CONTENIDO ---
-        function filterCards() {
-            const query = searchInput.value.toLowerCase().trim();
-            
-            // Controlar la visibilidad de la "X"
-            if (query.length > 0) {
-                clearButton.style.display = 'inline-block';
-            } else {
-                clearButton.style.display = 'none';
-            }
+        // --- FUNCIÓN: FILTRA EL CONTENIDO ---
+        function filterCards() {
+            const query = searchInput.value.toLowerCase().trim();
+            
+            if (query.length > 0) {
+                clearButton.style.display = 'inline-block';
+            } else {
+                clearButton.style.display = 'none';
+            }
 
-            if (query === '') {
-                // Si el campo está vacío, muestra todos los datos
-                renderCards(allUserData);
-                return;
-            }
+            if (query === '') {
+                renderCards(allUserData);
+                return;
+            }
 
-            // Filtra los datos: busca por Nombre_ApellidoPaterno
-            const filteredData = allUserData.filter(amigo => {
-                const fullName = `${amigo.Nombre_ApellidoPaterno || ''}`.toLowerCase();
-                return fullName.includes(query);
-            });
+            const filteredData = allUserData.filter(amigo => {
+                const fullName = `${amigo.Nombre_ApellidoPaterno || ''}`.toLowerCase();
+                return fullName.includes(query);
+            });
 
-            // Vuelve a renderizar con los datos filtrados
-            renderCards(filteredData);
-        }
+            renderCards(filteredData);
+        }
 
         document.addEventListener('DOMContentLoaded', () => {
             const iconList = ["🎅", "🎁", "🔔", "✨", "⛄", "🦌", "☕", "❄️", "🧤", "🎄", "🌟", "🍬"];
             const grid = document.querySelector('.product-grid');
 
-            // 1. INICIALIZAR NIEVE INMEDIATAMENTE
-            initSnowfall();
+            initSnowfall();
 
-            activateChristmasDayMode();
-            
-            // 2. AÑADIR LISTENER DE REDIMENSIONAMIENTO (resize)
-            // Esto es crucial para reajustar la altura si el usuario cambia el tamaño de la ventana (o gira el móvil)
-            window.addEventListener('resize', () => {
-                // Usamos setTimeout para dar tiempo a que el navegador termine el cálculo de layout
-                setTimeout(adjustSnowflakeHeight, 50);
-            });
+            activateChristmasDayMode();
+            
+            window.addEventListener('resize', () => {
+                setTimeout(adjustSnowflakeHeight, 50);
+            });
 
-            searchInput.addEventListener('input', filterCards); 
-        
-            // Botón X: borra y restablece el filtro
-            clearButton.addEventListener('click', () => { 
-                searchInput.value = '';
-                filterCards();
-            });
+            searchInput.addEventListener('input', filterCards); 
+        
+            clearButton.addEventListener('click', () => { 
+                searchInput.value = '';
+                filterCards();
+            });
 
-            searchInput.addEventListener('focus', () => {
-                // Usamos el contenedor para asegurarnos de que la barra de búsqueda y el botón 'X' 
-                // se vean cómodamente en la parte superior de la pantalla.
-                const searchContainer = document.getElementById('search-container');
-                searchContainer.scrollIntoView({ 
-                    behavior: 'smooth', // Animación suave
-                    block: 'start'      // Alinea el elemento en la parte superior del viewport
-                });
-            });
+            searchInput.addEventListener('focus', () => {
+                const searchContainer = document.getElementById('search-container');
+                searchContainer.scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'start'    
+                });
+            });
 
             // 3. CARGAR DATOS (fetch)
             fetch('datos.json')
                 .then(response => response.json())
                 .then(data => {
                     data.sort((a, b) => {
-                        // Usar localeCompare es mejor para la ordenación de strings que incluye tildes y otros caracteres especiales.
                         return a.Area.localeCompare(b.Area);
                     });
                     
                     allUserData = data; 
                 
-                    // Renderiza la lista completa al inicio
                     renderCards(allUserData);
-                    // ✅ AJUSTE FINAL: Se llama después de que las tarjetas están en el DOM.
                 })
                 .catch(error => {
                     console.error('Error al cargar datos.json:', error);
                     grid.innerHTML = '<p>No se pudieron cargar los datos del intercambio.</p>';
                 });
-            const loader = document.getElementById('christmas-loader');
-            setTimeout(() => {
-                loader.style.opacity = '0';
-                setTimeout(() => {
-                    loader.style.display = 'none';
-                }, 500);
-            }, 1500);
+            const loader = document.getElementById('christmas-loader');
+            setTimeout(() => {
+                loader.style.opacity = '0';
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                }, 500);
+            }, 1500);
 
-            // 5. LISTENERS DEL MODAL (Añadimos los listeners al DOMContentLoaded para que funcionen)
-            closeBtn.onclick = function () {
-                modal.style.display = 'none';
-                document.body.classList.remove('modal-open');
-            }
+            // 5. LISTENERS DEL MODAL (Se redefinen para incluir la clase de remoción)
+            closeBtn.onclick = function () {
+                modal.style.display = 'none';
+                document.body.classList.remove('modal-open');
+            }
 
-            window.onclick = function (event) {
-                if (event.target === modal) {
-                    modal.style.display = 'none';
-                    document.body.classList.remove('modal-open');
-                }
-            }
+            window.onclick = function (event) {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                    document.body.classList.remove('modal-open');
+                }
+            }
 
         });
     </script>
