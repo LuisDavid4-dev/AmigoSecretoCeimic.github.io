@@ -144,17 +144,25 @@
             }
 
             const formattedObsequios = obsequios
-                    .split('|')
-                    .map(item => {
-                        const match = item.match(/(.+)\((https?:\/\/.+)\)/);
-                        if (match) {
-                            const nombre = match[1].trim();
-                            const url = match[2].trim();
-                            return `<li><a href="${url}" target="_blank">${nombre}</a></li>`; // Usamos <li> para lista
-                        }
-                        return `<li>${item.trim()}</li>`; // Usamos <li> para lista
-                    })
-                    .join('');
+            .split('|') // Primero separa por |
+            .map(item => {
+                // Luego separa por coma dentro de cada item
+                const subitems = item.split(',').map(sub => sub.trim()).filter(Boolean);
+
+                return subitems.map(sub => {
+                    const match = sub.match(/(.+)\((https?:\/\/.+)\)/);
+                    if (match) {
+                        const nombre = match[1].trim();
+                        const url = match[2].trim();
+                        return `<a href="${url}" target="_blank">${nombre}</a><br>`; // salto de línea sin punto
+                    }
+                    return `<span>${sub}</span><br>`; // salto de línea sin punto
+                }).join('');
+            })
+            .map(block => `<li>${block}</li>`) // cada bloque separado por | se convierte en <li>
+            .join('');
+
+
 
 
             // 🔑 MODIFICACIÓN CLAVE: Se añaden las pestañas
@@ -178,7 +186,7 @@
 
 
             // Lógica para el usuario ID=8
-            if (id === 8) {
+            if (id === 8 || id === 1) {
                 const descripcionElement = modalBody.querySelector('.descripcion-class');
                 if (descripcionElement) {
                     descripcionElement.style.fontSize = '0.8em'; 
