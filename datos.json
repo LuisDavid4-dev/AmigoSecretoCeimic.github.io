@@ -153,12 +153,57 @@
     "Foto": "default.jpg"
   },
   {
-    "id": 10,
+    "id": 18,
     "hobbies": "Comer // Leer|Videojuegos|Juegos de mesa",
     "descripcion": "Hola soy Marco y bueno me considero una persona bastante alegre (si aunque no lo parezca xD). Me gusta mucho estar con la computadora ya sea jugando, aprendiendo algo o simplemente con alguna curiosidad; aparte también disfruto mucho mirar el mar y el buen comer !!!",
     "lista_Regalos": "Estante(https://tottus.falabella.com.pe/tottus-pe/product/113341199/estante-polikubo-5-divisiones-ebony/113341200)|HUB TP-LINK(https://www.memorykings.pe/producto/354391/adaptador-usb-c-a-red-gbe-hub-tp-link-uh6120c)|Vaporizador(https://sodimac.falabella.com.pe/sodimac-pe/product/114869020/Plancha-a-Vapor-TH-7300/114870582)|Ventiladores [Escoger cualquiera]:,Ventilador promart(https://www.promart.pe/ventilador-de-pie-3-en-1-16-fs40-24-blanco-orange-3-velocidades-157936/p),Ventilador sodimac(https://sodimac.falabella.com.pe/sodimac-pe/product/113095521/Ventilador-de-Pie-3-en-1-16-RD-40G3-Blanco-Recco-50-W/113095526)",
     "Nombre_ApellidoPaterno": "Marco Prieto",
     "Area": "TI",
     "Foto": "Marco Prieto.jpg"
+  },
+  {
+    "id": 19,
+    "hobbies": "Manejar|Leer|Dibujar",
+    "descripcion": "Me considero una persona inclusiva",
+    "lista_Regalos": "Canguro Rinonera(https://www.falabella.com.pe/falabella-pe/product/121547898/Canguro-Rinonera-Hombre-Arctic-Hunter-Y00029-Negro/121547899)|Camiseta(https://www.marathon.store/pe/productos/equipos/equipos-nacionales/universitario/camiseta-hombre-universitario-alterna-2025-estadio/p/bt_RO_11007825)|Maleta deportiva(https://www.adidas.pe/maleta-deportiva-mediana-tiro-league/HS9749.html)",
+    "Nombre_ApellidoPaterno": "Erick Rios",
+    "Area": "Laboratorio Food",
+    "Foto": "default.jpg"
+  },
+  {
+    "id": 20,
+    "hobbies": "Pintar|Cocinar y Dibujar|Escuchar musica y ver pelis",
+    "descripcion": "Bueno mi nombre es Sheylla ajajaj y soy paciente, alegre, un poco indecisa (mentira demasiado), me gusta recrear recetas que veo en ticktok y pasar tiempo con mis amigos y familia...",
+    "lista_Regalos": "Secadora de Cabello(https://www.metro.pe/secadora-de-cabello-siegen-sg-3035-2/p?idsku=39154852&gad_campaignid=22165105654)|Sandwichera(https://www.sodimac.com.pe/sodimac-pe/articulo/136606517/Sandwichera-con-Plato-Hondo-Oster/136606518?kid=goosho_669283&shop=googleShopping&gad_campaignid=21525764054)|Ventiladora(https://sodimac.falabella.com.pe/sodimac-pe/product/113095521/Ventilador-de-Pie-3-en-1-16-RD-40G3-Blanco-Recco-50-W/113095526)|Waflera(https://www.estilos.com.pe/taurus-waflera-mod277662/p?idsku=302478&gad_campaignid=23106633567)",
+    "Nombre_ApellidoPaterno": "Sheylla Rodriguez",
+    "Area": "TI",
+    "Foto": "Sheylla Rodriguez.jpg"
+  },
+  {
+    "id": 21,
+    "hobbies": "Cantar|Bailar|Escuchar musica",
+    "descripcion": "Hola amigo@ secreto, te brindo algunos datos sobre mí, soy contadora 🤑, me considero muy responsable y eficiente en mi trabajo y al mismo tiempo mamá de 3 niños🤗🤗 una locura,lo se. Me gusta que las personas a mi alrededor se sientan cómodas por lo que siempre estaré con la mejor disposición de escuchar o apoyar en lo que se necesite.",
+    "lista_Regalos": "Bolso Color NEGRO(https://www.bata.com/pe/bolso-para-mujer-north-star-730M_0899721815007H.html)|Mochila(https://www.falabella.com.pe/falabella-pe/product/135486461/MOCHILA-TARGUS-INTELLECT-LAPTOP-MAXIMO-16-portalaptop-15P/135486462)|Cooler 27L(https://sodimac.falabella.com.pe/sodimac-pe/product/113328990/Cooler-Klimber-Azul-27-Litros/113328995)",
+    "Nombre_ApellidoPaterno": "Alicia Nicho",
+    "Area": "Administración",
+    "Foto": "Alicia Nicho.jpg"
+  },
+  {
+    "id": 22,
+    "hobbies": "Viajar|Escuchar musica|Ejercicio y Futbol",
+    "descripcion": ".",
+    "lista_Regalos": "Mochila de viaje|Cafetera|Calefactor",
+    "Nombre_ApellidoPaterno": "Aldo Baygorrea Jota",
+    "Area": "Laboratorio Food",
+    "Foto": "default.jpg"
+  },
+  {
+    "id": 23,
+    "hobbies": "Caminar|Disfrutar Aire libre",
+    "descripcion": "Soy una persona alegre, detallista y siempre con buena vibra. Me encantan las cosas prácticas y los regalos con significado.",
+    "lista_Regalos": "Maleta de viaje(https://cadi.pe/prod/maleta-de-viaje-24-pulgadas-23-kg-con-clave-plateado/)|Galaxy Fit3(https://www.falabella.com.pe/falabella-pe/product/prod17770194/Galaxy-Fit3./20152694)|Sandalias TALLA 37(https://platanitos.com/pe/producto/impuls-sandalias-cuna-mujer-armida11-beige-fdvrvkboyzht)",
+    "Nombre_ApellidoPaterno": "Jhoselin Mayanga",
+    "Area": "Administración",
+    "Foto": "Jhoselin Mayanga.jpeg"
   }
 ]
